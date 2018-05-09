@@ -10,6 +10,10 @@ import { DiscoverComponent } from './components/discover/discover.component';
 import { CreateComponent } from './components/create/create.component';
 import { RouteNotFoundComponent } from './components/route-not-found/route-not-found.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { EventsComponent } from './components/home/events/events.component';
+import { EventComponent } from './components/home/events/event/event.component';
+import { CampaignsComponent } from './components/home/campaigns/campaigns.component';
+import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     DiscoverComponent,
     CreateComponent,
     RouteNotFoundComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    EventsComponent,
+    EventComponent,
+    CampaignsComponent,
+    CampaignComponent
   ],
   imports: [
     BrowserModule,
