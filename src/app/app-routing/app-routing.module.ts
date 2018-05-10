@@ -9,11 +9,14 @@ import {EventsComponent} from '../components/home/events/events.component';
 import {CampaignsComponent} from '../components/home/campaigns/campaigns.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent, children: [
+  {path: '', redirectTo: '/home/events', pathMatch: 'full'},
+  {
+    path: 'home', component: HomeComponent, children: [
       {path: '', redirectTo: 'events', pathMatch: 'full'},
       {path: 'events', component: EventsComponent},
       {path: 'campaigns', component: CampaignsComponent}
-    ]},
+    ]
+  },
   {path: 'discover', component: DiscoverComponent},
   {path: 'create', component: CreateComponent},
   {path: 'profile', component: UserProfileComponent},
