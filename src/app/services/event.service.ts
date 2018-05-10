@@ -20,16 +20,26 @@ export class EventService {
   }
 
   getEvents(): Observable<Event[]> {
-    return of(eventsMock);
+    return of(eventsStub);
   }
 }
 
-const eventsMock = [{
+const eventsStub = [{
   'name': 'Help the homeless rats',
-  'description': 'There is a lot of poverty between the rats so the need help!'
+  'description': 'There is a lot of poverty between the rats so the need help!',
+  'startTime': 'Sep 30 15 AM',
+  'endTime': 'Sep 30 16 PM',
+  'location': 'Grave 5, Eindhoven',
+  'peopleAttending': 135
+
+
 }, {
   'name': 'Save a mosquito',
-  'description': 'Protect the mosquitosm and shit'
+  'description': 'Protect the mosquitosm and shit',
+  'startTime': 'Sep 30 15 AM',
+  'endTime': 'Sep 30 16 PM',
+  'location': 'Grave 3, Eindhoven',
+  'peopleAttending': 135
 }];
 
 
