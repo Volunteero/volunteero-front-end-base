@@ -8,6 +8,8 @@ import {UserProfileComponent} from '../components/user-profile/user-profile.comp
 import {EventsComponent} from '../components/home/events/events.component';
 import {CampaignsComponent} from '../components/home/campaigns/campaigns.component';
 import {ActivityComponent} from '../components/activity/activity.component';
+import {TimelineComponent} from '../components/activity/timeline/timeline.component';
+import {SupportersComponent} from '../components/activity/supporters/supporters.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home/events', pathMatch: 'full'},
@@ -22,9 +24,16 @@ const routes: Routes = [
   {path: 'create', component: CreateComponent},
   {path: 'profile', component: UserProfileComponent},
 
-  {path: 'events/:id', component: ActivityComponent},
-  {path: 'campaigns/:id', component: ActivityComponent},
-  {path: 'campaigns/:id', component: },
+
+  {path: 'events/:id', redirectTo: '/events/:id/timeline', pathMatch: 'full'},
+
+  {
+    path: 'events/:id', component: ActivityComponent, children: [
+      {path: '', redirectTo: 'timeline', pathMatch: 'full'},
+      {path: 'timeline', component: TimelineComponent},
+      {path: 'supporters', component: SupportersComponent}
+    ]
+  },
 
   {path: '**', component: RouteNotFoundComponent}
 ];
