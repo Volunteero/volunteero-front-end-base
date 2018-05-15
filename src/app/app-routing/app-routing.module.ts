@@ -24,6 +24,7 @@ const routes: Routes = [
 
   {path: 'events/:id', component: ActivityComponent},
   {path: 'campaigns/:id', component: ActivityComponent},
+  {path: 'campaigns/:id', component: },
 
   {path: '**', component: RouteNotFoundComponent}
 ];

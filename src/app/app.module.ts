@@ -16,6 +16,8 @@ import { CampaignsComponent } from './components/home/campaigns/campaigns.compon
 import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ActivityComponent } from './components/activity/activity.component';
+import { TimelineComponent } from './components/activity/timeline/timeline.component';
+import { SupportersComponent } from './components/activity/supporters/supporters.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { ActivityComponent } from './components/activity/activity.component';
     EventComponent,
     CampaignsComponent,
     CampaignComponent,
-    ActivityComponent
+    ActivityComponent,
+    TimelineComponent,
+    SupportersComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,39 @@
-<p>
-  activity works!
-  {{event.description}}
-</p>
+<div class="row justify-content-center">
+  <div class="col-md-1 bg-light">
+    <img src="../../../assets/images/activity.png" class="img-fluid rounded-circle">
+  </div>
+  <div class="col-md-10 bg-light ">
+    <h5>This is a title</h5>
+    <p>Some details</p>
+    <p>Some details</p>
+
+  </div>
+
+</div>
+
+<div class="row justify-content-center ">
+  <div class="col-md-1 bg-light">
+    <button type="button" class="btn btn-secondary">Contribute</button>
+  </div>
+  <div class="col-md-10  bg-light">
+    Here we have some prograss #tags and so on
+
+  </div>
+</div>
+
+<div class="row justify-content-center " id="tab-bar">
+  <div class="col-md-11 ">
+    <nav class="nav">
+      <a class="nav-link" [routerLink]="['./timeline']">Timeline</a>
+      <a class="nav-link" [routerLink]="['./supporters']">Supporters</a>
+    </nav>
+
+  </div>
+</div>
+<div class="row justify-content-center ">
+  <div class="col-md-11 ">
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
