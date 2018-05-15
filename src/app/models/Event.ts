@@ -1,8 +1,9 @@
 export interface Event {
-  name: String;
-  description: String;
-  startTime: String;
-  endTime: String;
-  location: String;
-  peopleAttending: Number;
+  id: string;
+  name: string;
+  description: string;
+  startTime: string;
+  endTime: string;
+  location: string;
+  peopleAttending: number;
 }

@@ -15,6 +15,7 @@ import { EventComponent } from './components/home/events/event/event.component';
 import { CampaignsComponent } from './components/home/campaigns/campaigns.component';
 import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ActivityComponent } from './components/activity/activity.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
     EventsComponent,
     EventComponent,
     CampaignsComponent,
-    CampaignComponent
+    CampaignComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

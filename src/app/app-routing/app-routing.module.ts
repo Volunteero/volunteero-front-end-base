@@ -7,6 +7,7 @@ import {CreateComponent} from '../components/create/create.component';
 import {UserProfileComponent} from '../components/user-profile/user-profile.component';
 import {EventsComponent} from '../components/home/events/events.component';
 import {CampaignsComponent} from '../components/home/campaigns/campaigns.component';
+import {ActivityComponent} from '../components/activity/activity.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home/events', pathMatch: 'full'},
@@ -20,6 +21,9 @@ const routes: Routes = [
   {path: 'discover', component: DiscoverComponent},
   {path: 'create', component: CreateComponent},
   {path: 'profile', component: UserProfileComponent},
+
+  {path: 'events/:id', component: ActivityComponent},
+  {path: 'campaigns/:id', component: ActivityComponent},
 
   {path: '**', component: RouteNotFoundComponent}
 ];
