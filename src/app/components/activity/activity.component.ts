@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {EventService} from '../../services/event.service';
+import {EventService} from '../../services/event/event.service';
 import {Event} from '../../models/Event';
 import {CampaignService} from '../../services/campaign/campaign.service';
 import {Campaign} from '../../models/Campaign';

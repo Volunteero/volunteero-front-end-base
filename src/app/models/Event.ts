@@ -2,8 +2,12 @@ export interface Event {
   id: string;
   name: string;
   description: string;
-  startTime: string;
-  endTime: string;
+  start: string;
+  end: string;
   location: string;
-  peopleAttending: number;
+  volunteers: number;
+  category: string;
+  points: number;
+  organizationId: string;
+  available: boolean;
 }
