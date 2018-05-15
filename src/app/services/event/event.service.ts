@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
-import {Event} from '../models/Event';
+import {Event} from '../../models/Event';
 import {of} from 'rxjs/internal/observable/of';
 
 const httpOptions = {
