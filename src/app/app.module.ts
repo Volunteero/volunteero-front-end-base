@@ -15,6 +15,9 @@ import { EventComponent } from './components/home/events/event/event.component';
 import { CampaignsComponent } from './components/home/campaigns/campaigns.component';
 import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
 import {HttpClientModule} from '@angular/common/http';
+import { DiscoverEventComponent } from './components/discover/discover-event/discover-event.component';
+import { DiscoverCampaignComponent } from './components/discover/discover-campaign/discover-campaign.component';
+import { DiscoverOrganizationComponent } from './components/discover/discover-organization/discover-organization.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import {HttpClientModule} from '@angular/common/http';
     EventsComponent,
     EventComponent,
     CampaignsComponent,
-    CampaignComponent
+    CampaignComponent,
+    DiscoverEventComponent,
+    DiscoverCampaignComponent,
+    DiscoverOrganizationComponent
   ],
   imports: [
     BrowserModule,

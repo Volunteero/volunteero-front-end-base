@@ -1,3 +1,55 @@
-<p>
-  discover works!
-</p>
+<div class="container-fluid">
+  <div class="row top-space">
+    <div class="col-md-2 offset-md-1">
+      <h5 class="font-weight-bold">
+        I am looking for
+      </h5>
+    </div>
+    <div class="col-md-8">
+      <input #box (keyup.enter)="search(box.value)" type="text" class="form-control" placeholder="Search term" aria-label="seacrTerm">
+    </div>
+  </div>
+  <div class="row top-space">
+    <div class="col-md-2 offset-md-1">
+      <h5 class="font-weight-bold">
+        And interested in
+      </h5>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group btn-group-toggle btn-group btn-group-justified" data-toggle="buttons">
+        <label (click)="onResourceTypeChanged('Anything', box.value)" class="col-auto btn btn-secondary active">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked> Anything
+        </label>
+        <label (click)="onResourceTypeChanged('Events', box.value)" class="col-auto btn btn-secondary">
+          <input ng-change="onResourceTypeChanged($event)" ng-model="test" ng-value="1" type="radio" name="options" id="option2" autocomplete="off"> Events
+        </label>
+        <label (click)="onResourceTypeChanged('Campaigns', box.value)" class="col-auto btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off"> Campaigns
+        </label>
+        <label (click)="onResourceTypeChanged('Organizations', box.value)" class="col-auto btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off"> Organizations
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row top-space">
+    <!-- Events -->
+    <div *ngIf="searchResults.events" class="offset-md-1 col-md-11">
+      <div *ngFor="let event of searchResults.events">
+        {{ event.name }}
+      </div>
+    </div>
+    <!-- Campaigns -->
+    <div *ngIf="searchResults.campaigns" class="offset-md-1 col-md-11">
+      <div *ngFor="let campaign of searchResults.campaigns">
+        {{ campaign.name }}
+      </div>
+    </div>
+    <!-- Organizations -->
+    <div *ngIf="searchResults.organizations" class="offset-md-1 col-md-11">
+      <div *ngFor="let organization of searchResults.organizations">
+        {{ organization.organization_name }}
+      </div>
+    </div>
+  </div>
+</div>
