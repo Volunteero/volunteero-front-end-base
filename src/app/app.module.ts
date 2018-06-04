@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
+import { RoleControlComponent } from './components/role-control/role-control.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SupportersComponent } from './components/activity/supporters/supporters
     CampaignComponent,
     ActivityComponent,
     TimelineComponent,
-    SupportersComponent
+    SupportersComponent,
+    RoleControlComponent
   ],
   imports: [
     BrowserModule,
