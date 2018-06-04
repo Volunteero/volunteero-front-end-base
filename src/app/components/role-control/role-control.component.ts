@@ -24,7 +24,7 @@ export class RoleControlComponent implements OnInit {
    */
 
   get displayName() {
-    return '';
+    return (this.selectedRole.displayName !== '') ? this.selectedRole : 'Dickson';
   }
 
   /**
