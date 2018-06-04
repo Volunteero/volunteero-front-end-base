@@ -19,6 +19,7 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
 import { RoleControlComponent } from './components/role-control/role-control.component';
+import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RoleControlComponent } from './components/role-control/role-control.com
     ActivityComponent,
     TimelineComponent,
     SupportersComponent,
-    RoleControlComponent
+    RoleControlComponent,
+    ListRoleComponent
   ],
   imports: [
     BrowserModule,

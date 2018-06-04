@@ -1,4 +1,24 @@
 
-<p>
-  role-control works!
-</p>
+<!-- Current role -->
+<div [class]="styling.item" id="current-role">
+  <!-- TODO: make image be in line with the text -->
+  <div>
+    <img src="../../../assets/images/avatar.png" class="logo img-fluid rounded-circle">
+  </div>
+  <div>
+    <h4>Dickson</h4>
+    <p>
+      Volunteer
+      <i>(Hero)</i>
+      <br/> Eindhoven
+    </p>
+  </div>
+</div>
+<div [class]="styling.divider"></div>
+<!-- List of available roles -->
+<div id="available-roles">
+  <div [class]="styling.item" *ngFor="let role of roles">
+    <app-list-role [role]="role">
+    </app-list-role>
+  </div>
+</div>
