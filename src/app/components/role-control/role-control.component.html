@@ -1,4 +1,3 @@
-
 <!-- Current role -->
 <div [class]="styling.item" id="current-role">
   <!-- TODO: make image be in line with the text -->
@@ -8,9 +7,9 @@
   <div>
     <h4>Dickson</h4>
     <p>
-      Volunteer
-      <i>(Hero)</i>
-      <br/> Eindhoven
+      {{selectedRole.title}}
+      <i>({{selectedRole.level}})</i>
+      <br/> {{selectedRole.location}}
     </p>
   </div>
 </div>

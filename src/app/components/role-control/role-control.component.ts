@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {RoleService} from '../../services/user-role/user-role.service';
-import {Role} from '../../models/Role';
+import { RoleService } from '../../services/user-role/user-role.service';
+import { Role } from '../../models/Role';
 
 @Component({
   selector: 'app-role-control',
@@ -14,12 +14,32 @@ export class RoleControlComponent implements OnInit {
     divider: "dropdown-divider"
   }
 
+  private selectedRole: Role = null;
   private roles: Role[] = [];
 
   constructor(private roleService: RoleService) { }
 
+  /**
+   * Computed properties
+   */
+
+  get displayName() {
+    return '';
+  }
+
+  /**
+   * Logic
+   */
+
   ngOnInit() {
+    this.getCurrentRole();
     this.getRoles();
+  }
+
+  getCurrentRole(): void {
+    this.roleService.getCurrentRole().subscribe(role => {
+      this.selectedRole = role;
+    })
   }
 
   getRoles(): void {

@@ -38,18 +38,21 @@ const rolestub = [
     title: 'Volunteer',
     level: 'hero',
     location: 'Eindhoven',
+    imageUrl: ''
   }, {
     id: 2,
     displayName: '',
     title: 'UNESCO',
     level: 'member',
     location: 'worldwide',
+    imageUrl: ''  
   }, {
     id: 3,
     displayName: '',
     title: 'WWF',
     level: 'moderator',
     location: 'worldwide',
+    imageUrl: ''
   }
 ];
 

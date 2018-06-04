@@ -4,4 +4,5 @@ export interface Role {
   title: string;
   level: string;
   location: string;
+  imageUrl: string;
 }
