@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-discover-event',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discover-event.component.css']
 })
 export class DiscoverEventComponent implements OnInit {
+
+  @Input() event: Event;
 
   constructor() { }
 

@@ -35,21 +35,18 @@
   <div class="row top-space">
     <!-- Events -->
     <div *ngIf="searchResults.events" class="offset-md-1 col-md-11">
-      <div *ngFor="let event of searchResults.events">
-        {{ event.name }}
-      </div>
+      <app-discover-event *ngFor="let event of searchResults.events" [event]="event">
+      </app-discover-event>
     </div>
     <!-- Campaigns -->
     <div *ngIf="searchResults.campaigns" class="offset-md-1 col-md-11">
-      <div *ngFor="let campaign of searchResults.campaigns">
-        {{ campaign.name }}
-      </div>
+      <app-discover-campaign *ngFor="let campaign of searchResults.campaigns" [campaign]="campaign">
+      </app-discover-campaign>
     </div>
     <!-- Organizations -->
     <div *ngIf="searchResults.organizations" class="offset-md-1 col-md-11">
-      <div *ngFor="let organization of searchResults.organizations">
-        {{ organization.organization_name }}
-      </div>
+      <app-discover-organization *ngFor="let organization of searchResults.organizations" [organization]="organization">
+      </app-discover-organization>
     </div>
   </div>
 </div>

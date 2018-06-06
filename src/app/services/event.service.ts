@@ -25,21 +25,17 @@ export class EventService {
 }
 
 const eventsStub = [{
-  'name': 'Help the homeless rats',
-  'description': 'There is a lot of poverty between the rats so the need help!',
-  'startTime': 'Sep 30 15 AM',
-  'endTime': 'Sep 30 16 PM',
-  'location': 'Grave 5, Eindhoven',
-  'peopleAttending': 135
-
-
-}, {
-  'name': 'Save a mosquito',
-  'description': 'Protect the mosquitosm and shit',
-  'startTime': 'Sep 30 15 AM',
-  'endTime': 'Sep 30 16 PM',
-  'location': 'Grave 3, Eindhoven',
-  'peopleAttending': 135
+  _id: '1232312312312',
+  name: 'Event 1 Name',
+  description: 'Questions explained agreeable preferred strangers too him her son. Set put shyness offices his females him distant. Improve has message besides shy himself cheered however how son. Quick judge other leave ask first chief her. Indeed or remark always silent seemed narrow be. Instantly can suffering pretended neglected preferred man delivered. Perhaps fertile brandon do imagine to cordial cottage. ',
+  start: '12:20',
+  end: '13:50',
+  location: 'Klokgebouw 280',
+  volunteers: 40,
+  category: 'Test',
+  points: 50,
+  organization_id: '123131312213213',
+  available: true
 }];
 
 

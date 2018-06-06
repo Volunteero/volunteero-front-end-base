@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Campaign } from '../../../models/Campaign';
 
 @Component({
   selector: 'app-discover-campaign',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscoverCampaignComponent implements OnInit {
 
+  @Input() campaign: Campaign;
   constructor() { }
 
   ngOnInit() {
