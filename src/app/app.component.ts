@@ -10,9 +10,12 @@ import * as decode from 'jwt-decode';
 export class AppComponent {
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
-      console.log(params)
-      const token = params['token'];
-      console.log(token); // Print the parameter to the console. 
+      if (params !== {} && typeof params.token !== 'undefined') {
+        console.log(params)
+        const token = params['token'];
+        console.log(token)
+        console.log(decode(token)); // Print the parameter to the console. 
+      }
     });
   }
 }
