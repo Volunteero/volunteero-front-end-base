@@ -52,6 +52,7 @@ const userStub = {
   city: 'Appleton',
   country: 'United States',
   bio: '',
+  accessToken: ''
 }
 
 const rolestub = [
@@ -61,21 +62,24 @@ const rolestub = [
     title: 'Volunteer',
     level: 'hero',
     location: 'Eindhoven',
-    imageUrl: ''
+    imageUrl: '',
+    accessToken: ''
   }, {
     id: '2',
     displayName: '',
     title: 'UNESCO',
     level: 'member',
     location: 'worldwide',
-    imageUrl: ''
+    imageUrl: '',
+    accessToken: ''
   }, {
     id: '3',
     displayName: '',
     title: 'WWF',
     level: 'moderator',
     location: 'worldwide',
-    imageUrl: ''
+    imageUrl: '',
+    accessToken: ''
   }
 ];
 

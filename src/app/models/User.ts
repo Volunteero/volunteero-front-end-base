@@ -7,4 +7,5 @@ export interface User {
   city: string;
   country: string;
   bio: string;
+  accessToken: string;
 }

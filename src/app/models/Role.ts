@@ -5,4 +5,5 @@ export interface Role {
   level: string;
   location: string;
   imageUrl: string;
+  accessToken: string;
 }
