@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Role } from '../../models/Role';
 import { of } from 'rxjs/internal/observable/of';
 
@@ -15,19 +16,27 @@ const httpOptions = {
 export class RoleService {
 
   private eventsUrl = '';
-  private selectedRole: Role;
+  private selectedRoleSource: Subject<Role> = new Subject<Role>();
+  private knownRolesSource: Subject<Role[]> = new Subject<Role[]>();
+
+  selectedRole$ = this.selectedRoleSource.asObservable();
+  knownRoles$ = this.knownRolesSource.asObservable();
 
   constructor(private http: HttpClient) {
-    this.selectedRole = rolestub[0];
+    this.refresh();
   }
 
-  getUserRoles(): Observable<Role[]> {
-    const listedRoles = rolestub.filter(role => role.id !== this.selectedRole.id);
-    return of(listedRoles);
+  refresh() {
+    console.log('Yo');
+    this.selectedRoleSource.next(rolestub[0]);
+    this.knownRolesSource.next(rolestub);
+    console.log(this.selectedRole$);
   }
 
-  getCurrentRole(): Observable<Role> {
-    return of(this.selectedRole);
+
+  setCurrentRole(role: Role) {
+    console.log(role)
+    this.selectedRoleSource.next(role);
   }
 }
 
@@ -45,7 +54,7 @@ const rolestub = [
     title: 'UNESCO',
     level: 'member',
     location: 'worldwide',
-    imageUrl: ''  
+    imageUrl: ''
   }, {
     id: 3,
     displayName: '',

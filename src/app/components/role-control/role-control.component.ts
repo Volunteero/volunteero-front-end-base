@@ -14,10 +14,19 @@ export class RoleControlComponent implements OnInit {
     divider: "dropdown-divider"
   }
 
-  private selectedRole: Role = null;
-  private roles: Role[] = [];
+  private selectedRole: Role;
+  private knownRoles: Role[];
 
-  constructor(private roleService: RoleService) { }
+  constructor(private roleService: RoleService) {
+    roleService.selectedRole$.subscribe(
+      role => {
+        this.selectedRole = role;
+      });
+    roleService.knownRoles$.subscribe(
+      roles => {
+        this.knownRoles = roles;
+      });
+  }
 
   /**
    * Computed properties
@@ -32,19 +41,11 @@ export class RoleControlComponent implements OnInit {
    */
 
   ngOnInit() {
-    this.getCurrentRole();
-    this.getRoles();
+    this.roleService.refresh();
   }
 
-  getCurrentRole(): void {
-    this.roleService.getCurrentRole().subscribe(role => {
-      this.selectedRole = role;
-    })
-  }
-
-  getRoles(): void {
-    this.roleService.getUserRoles().subscribe(roles => {
-      this.roles = roles;
-    });
+  selectRole(role: Role): void {
+    console.log(role);
+    this.roleService.setCurrentRole(role)
   }
 }

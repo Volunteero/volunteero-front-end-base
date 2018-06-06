@@ -16,8 +16,8 @@
 <div [class]="styling.divider"></div>
 <!-- List of available roles -->
 <div id="available-roles">
-  <div [class]="styling.item" *ngFor="let role of roles">
-    <app-list-role [role]="role">
+  <div [class]="styling.item" *ngFor="let role of knownRoles">
+    <app-list-role [role]="role" (click)="selectRole(role)">
     </app-list-role>
   </div>
 </div>
