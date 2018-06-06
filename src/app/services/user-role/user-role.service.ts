@@ -4,7 +4,9 @@ import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Role } from '../../models/Role';
 import { of } from 'rxjs/internal/observable/of';
-import { User } from '../../models/User';
+import { User, UserBuilder } from '../../models/User';
+
+UserBuilder.build().set().set()
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -35,6 +37,7 @@ export class RoleService {
     console.log(this.selectedRole$);
   }
 
+  setUser
 
   setCurrentRole(role: Role) {
     console.log(role)
@@ -51,7 +54,6 @@ const userStub = {
   email: '',
   city: 'Appleton',
   country: 'United States',
-  bio: '',
   accessToken: ''
 }
 

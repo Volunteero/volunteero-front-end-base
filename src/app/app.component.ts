@@ -13,6 +13,7 @@ export class AppComponent {
       if (params !== {} && typeof params.token !== 'undefined') {
         console.log(params)
         const token = params['token'];
+        // TODO: add the token handling logic
         console.log(token)
         console.log(decode(token)); // Print the parameter to the console. 
       }

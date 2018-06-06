@@ -9,3 +9,5 @@ export interface User {
   bio: string;
   accessToken: string;
 }
+
+// TODO: create the builder class for the interface instantiation?
