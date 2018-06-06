@@ -12,7 +12,7 @@ import {TimelineComponent} from '../components/activity/timeline/timeline.compon
 import {SupportersComponent} from '../components/activity/supporters/supporters.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home/events', pathMatch: 'full'},
+  {path: '', redirectTo: 'home/events', pathMatch: 'full'},
   {
     path: 'home', component: HomeComponent, children: [
       {path: '', redirectTo: 'events', pathMatch: 'full'},
