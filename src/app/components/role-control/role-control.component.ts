@@ -46,8 +46,7 @@ export class RoleControlComponent implements OnInit {
   get fullName() {
     const firstNamePart = this.user.first_name;
     const secondNamePart = (
-      typeof this.user.last_name === 'string'
-      && this.user.last_name !== ''
+      typeof this.user.last_name === 'string' && this.user.last_name !== ''
     ) ? ` ${this.user.last_name}` : '';
     return `${firstNamePart}${secondNamePart}`
   }

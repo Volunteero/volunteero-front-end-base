@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/user-role/user-role.service';
+import { User } from '../../models/User';
+import { Role } from '../../models/Role';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -8,7 +10,25 @@ import { RoleService } from '../../services/user-role/user-role.service';
 })
 export class TopNavBarComponent implements OnInit {
 
-  constructor(private roleService: RoleService) { }
+  private user: User;
+  private role: Role;
+
+  constructor(private roleService: RoleService) {
+    roleService.user$.subscribe(
+      user => {
+        this.user = user;
+      });
+    roleService.selectedRole$.subscribe(
+      role => {
+        this.role = role;
+      });
+  }
+
+  get displayName() {
+    const userPart = this.user.first_name || this.user.username;
+    const rolePart = this.role.title || '';
+    return `${userPart} (${rolePart})`;
+  }
 
   ngOnInit() {
   }

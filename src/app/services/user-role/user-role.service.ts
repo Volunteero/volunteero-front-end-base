@@ -44,7 +44,8 @@ export class RoleService {
 
 
 const userStub = {
-  id: 'dafoe5',
+  id: '',
+  username: 'dafoe5',
   first_name: 'Willem',
   last_name: '',
   email: '',
