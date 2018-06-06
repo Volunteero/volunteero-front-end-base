@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Role } from '../../models/Role';
 import { of } from 'rxjs/internal/observable/of';
+import { User } from '../../models/User';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,11 +15,11 @@ const httpOptions = {
 })
 
 export class RoleService {
-
-  private eventsUrl = '';
+  private userSource: Subject<User> = new Subject<User>();
   private selectedRoleSource: Subject<Role> = new Subject<Role>();
   private knownRolesSource: Subject<Role[]> = new Subject<Role[]>();
 
+  user$ = this.userSource.asObservable();
   selectedRole$ = this.selectedRoleSource.asObservable();
   knownRoles$ = this.knownRolesSource.asObservable();
 
@@ -28,6 +29,7 @@ export class RoleService {
 
   refresh() {
     console.log('Yo');
+    this.userSource.next(userStub);
     this.selectedRoleSource.next(rolestub[0]);
     this.knownRolesSource.next(rolestub);
     console.log(this.selectedRole$);
@@ -40,23 +42,34 @@ export class RoleService {
   }
 }
 
+
+const userStub = {
+  id: 'dafoe5',
+  first_name: 'Willem',
+  last_name: '',
+  email: '',
+  city: 'Appleton',
+  country: 'United States',
+  bio: '',
+}
+
 const rolestub = [
   {
-    id: 1,
+    id: '1',
     displayName: '',
     title: 'Volunteer',
     level: 'hero',
     location: 'Eindhoven',
     imageUrl: ''
   }, {
-    id: 2,
+    id: '2',
     displayName: '',
     title: 'UNESCO',
     level: 'member',
     location: 'worldwide',
     imageUrl: ''
   }, {
-    id: 3,
+    id: '3',
     displayName: '',
     title: 'WWF',
     level: 'moderator',

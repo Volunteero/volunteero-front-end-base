@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/user-role/user-role.service';
 import { Role } from '../../models/Role';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-role-control',
@@ -16,8 +17,13 @@ export class RoleControlComponent implements OnInit {
 
   private selectedRole: Role;
   private knownRoles: Role[];
+  private user: User;
 
   constructor(private roleService: RoleService) {
+    roleService.user$.subscribe(
+      user => {
+        this.user = user;
+      });
     roleService.selectedRole$.subscribe(
       role => {
         this.selectedRole = role;
@@ -33,7 +39,17 @@ export class RoleControlComponent implements OnInit {
    */
 
   get displayName() {
-    return (this.selectedRole.displayName !== '') ? this.selectedRole : 'Dickson';
+    return (this.selectedRole.displayName !== '') ? this.selectedRole
+      : this.fullName;
+  }
+
+  get fullName() {
+    const firstNamePart = this.user.first_name;
+    const secondNamePart = (
+      typeof this.user.last_name === 'string'
+      && this.user.last_name !== ''
+    ) ? ` ${this.user.last_name}` : '';
+    return `${firstNamePart}${secondNamePart}`
   }
 
   /**
