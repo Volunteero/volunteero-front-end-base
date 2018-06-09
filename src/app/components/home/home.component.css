@@ -1,3 +1,17 @@
 #tab-bar{
   margin-bottom: 3%;
 }
+.nav-link-pink {
+  color: hotpink;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  display: block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+  .nav-link-pink:hover {
+    color: deeppink;
+  }

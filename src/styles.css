@@ -1,3 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";*/
 
+.btn-pink {
+  background: #ec5b8d;
+  color: #ffffff;
+}
+
+  .btn-pink:hover, .btn-pink:focus, .btn-pink:active, .btn-pink.active, .open > .dropdown-toggle.btn-pink {
+    background: #e73674;
+    color: #ffffff;
+  }
+
+  .btn-pink:active, .btn-pink.active {
+    background: #d21959;
+    box-shadow: none;
+  }
+
+  .nav-link:hover, .nav-link:active {
+    color: #d21959;
+  }
+
+body {
+  color: #d21959 !important;
+}

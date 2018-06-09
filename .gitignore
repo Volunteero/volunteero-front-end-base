@@ -43,3 +43,9 @@ testem.log
 .DS_Store
 Thumbs.db
 .directory
+.vs/volunteero-front-end-base/v15/.suo
+.vs/config/applicationhost.config
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+package-lock.json
+package.json
