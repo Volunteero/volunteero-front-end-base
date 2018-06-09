@@ -4,11 +4,13 @@
   <div>
     <!-- TODO: add the edit and view incentives -->
     <h4>{{displayName}}</h4>
-    <p>
-      {{selectedRole.title | uppercase}}
-      <i>({{selectedRole.level}})</i>
-      <br/> {{selectedRole.location}}
-    </p>
+    <span *ngIf="selectedRole">
+      <p>
+        {{selectedRole.title | uppercase}}
+        <i>({{selectedRole.level}})</i>
+        <br/> {{selectedRole.location}}
+      </p>
+    </span>
   </div>
 </div>
 <div [class]="styling.divider"></div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RoleService } from '../../services/user-role/user-role.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserRoleService } from '../../services/user-role/user-role.service';
 import { Role } from '../../models/Role';
 import { User } from '../../models/User';
 
@@ -10,6 +10,7 @@ import { User } from '../../models/User';
 })
 export class RoleControlComponent implements OnInit {
 
+  @Input()
   private styling = {
     item: "dropdown-item",
     divider: "dropdown-divider"
@@ -19,7 +20,7 @@ export class RoleControlComponent implements OnInit {
   private knownRoles: Role[];
   private user: User;
 
-  constructor(private roleService: RoleService) {
+  constructor(private roleService: UserRoleService) {
     roleService.user$.subscribe(
       user => {
         this.user = user;

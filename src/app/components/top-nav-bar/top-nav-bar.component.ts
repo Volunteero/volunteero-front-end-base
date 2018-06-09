@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RoleService } from '../../services/user-role/user-role.service';
+import { UserRoleService } from '../../services/user-role/user-role.service';
 import { User } from '../../models/User';
 import { Role } from '../../models/Role';
 
@@ -13,7 +13,7 @@ export class TopNavBarComponent implements OnInit {
   private user: User;
   private role: Role;
 
-  constructor(private roleService: RoleService) {
+  constructor(private roleService: UserRoleService) {
     roleService.user$.subscribe(
       user => {
         this.user = user;
