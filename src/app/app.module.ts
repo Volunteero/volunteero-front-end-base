@@ -14,7 +14,7 @@ import { EventsComponent } from './components/home/events/events.component';
 import { EventComponent } from './components/home/events/event/event.component';
 import { CampaignsComponent } from './components/home/campaigns/campaigns.component';
 import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';

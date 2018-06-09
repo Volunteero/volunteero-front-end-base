@@ -21,8 +21,8 @@ export class TokenManager {
   public decodeToUserToken(tokenString): UserToken {
     const tokenData = this.decode(tokenString);
     const token = new JwtToken(
-      tokenData.username || '',
       tokenData.id || '',
+      tokenData.username || '',
       tokenData.iat || 0,
       tokenData.exp || 0
     )

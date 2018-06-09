@@ -20,16 +20,20 @@ export class RoleControlComponent implements OnInit {
   private knownRoles: Role[];
   private user: User;
 
-  constructor(private roleService: UserRoleService) {
-    roleService.user$.subscribe(
+  constructor(
+    private userRoleService: UserRoleService
+  ) {
+    userRoleService.user$.subscribe(
       user => {
+        console.log('RC: Got user');
+        console.log(user);
         this.user = user;
       });
-    roleService.selectedRole$.subscribe(
+    userRoleService.selectedRole$.subscribe(
       role => {
         this.selectedRole = role;
       });
-    roleService.knownRoles$.subscribe(
+    userRoleService.knownRoles$.subscribe(
       roles => {
         this.knownRoles = roles;
       });
@@ -40,16 +44,22 @@ export class RoleControlComponent implements OnInit {
    */
 
   get displayName() {
-    return (this.selectedRole.displayName !== '') ? this.selectedRole
-      : this.fullName;
+    if (this.selectedRole) {
+      return (this.selectedRole.displayName !== '') ? this.selectedRole
+        : this.fullName;
+    }
+    console.warn('A selectedRole is not available...')
   }
 
   get fullName() {
-    const firstNamePart = this.user.first_name;
-    const secondNamePart = (
-      typeof this.user.last_name === 'string' && this.user.last_name !== ''
-    ) ? ` ${this.user.last_name}` : '';
-    return `${firstNamePart}${secondNamePart}`
+    if (this.user) {
+      const firstNamePart = this.user.first_name;
+      const secondNamePart = (
+        typeof this.user.last_name === 'string' && this.user.last_name !== ''
+      ) ? ` ${this.user.last_name}` : '';
+      return `${firstNamePart}${secondNamePart}`
+    }
+    console.warn('A user is not available...')
   }
 
   /**
@@ -57,11 +67,11 @@ export class RoleControlComponent implements OnInit {
    */
 
   ngOnInit() {
-    this.roleService.refresh();
+    this.userRoleService.refresh();
   }
 
   selectRole(role: Role): void {
     console.log(role);
-    this.roleService.setCurrentRole(role)
+    this.userRoleService.setCurrentRole(role)
   }
 }

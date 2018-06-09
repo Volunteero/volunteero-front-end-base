@@ -15,9 +15,9 @@ const httpOptions = {
 })
 
 export class UserRoleService {
-  private userSource: Subject<User> = new Subject<User>();
-  private selectedRoleSource: Subject<Role> = new Subject<Role>();
-  private knownRolesSource: Subject<Role[]> = new Subject<Role[]>();
+  private userSource: BehaviorSubject<User> = new BehaviorSubject<User>(userStub);
+  private selectedRoleSource: BehaviorSubject<Role> = new BehaviorSubject<Role>(roleStub);
+  private knownRolesSource: BehaviorSubject<Role[]> = new BehaviorSubject<Role[]>([roleStub]);
 
   user$ = this.userSource.asObservable();
   selectedRole$ = this.selectedRoleSource.asObservable();
@@ -29,19 +29,18 @@ export class UserRoleService {
 
   refresh() {
     console.log('Yo');
-    // this.userSource.next(userStub);
-    this.selectedRoleSource.next(rolestub[0]);
-    this.knownRolesSource.next(rolestub);
-    console.log(this.selectedRole$);
+    this.selectedRoleSource.next(rolesStub[0]);
+    this.knownRolesSource.next(rolesStub);
   }
 
-  setUser(user: User){ 
+  setUser(user: User) {
     console.log('RoleService: setting user');
     this.userSource.next(user);
+    console.log(this.user$)
   }
 
   setCurrentRole(role: Role) {
-    console.log(role)
+    console.log('RoleService: setting role');
     this.selectedRoleSource.next(role);
   }
 }
@@ -49,17 +48,27 @@ export class UserRoleService {
 
 const userStub = {
   id: '',
-  username: 'dafoe5',
-  first_name: 'Willem',
+  username: '',
+  first_name: '',
   last_name: '',
   email: '',
-  city: 'Appleton',
-  country: 'United States',
+  city: '',
+  country: '',
   bio: '',
   accessToken: ''
 }
 
-const rolestub = [
+const roleStub = {
+  id: '1',
+  displayName: '',
+  title: 'Volunteer',
+  level: 'hero',
+  location: 'Eindhoven',
+  imageUrl: '',
+  accessToken: ''
+}
+
+const rolesStub = [
   {
     id: '1',
     displayName: '',

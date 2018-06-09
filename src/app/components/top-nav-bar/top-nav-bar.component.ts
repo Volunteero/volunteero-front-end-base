@@ -16,24 +16,31 @@ export class TopNavBarComponent implements OnInit {
   readonly fallback_url: string;
 
   constructor(
-    private userRoleService: UserRoleService, 
-    private vSpacesService: VolunteeroSpacesService 
+    private userRoleService: UserRoleService,
+    private vSpacesService: VolunteeroSpacesService
   ) {
     userRoleService.user$.subscribe(
       user => {
+        console.log('Got user');
+        console.log(user);
         this.user = user;
       });
-      userRoleService.selectedRole$.subscribe(
+    userRoleService.selectedRole$.subscribe(
       role => {
+        console.log('Got role')
+        console.log(role)
         this.role = role;
       });
-      this.fallback_url = vSpacesService.getGatesUrl();
+    this.fallback_url = vSpacesService.getGatesUrl();
   }
 
   get displayName() {
-    const userPart = this.user.first_name || this.user.username;
-    const rolePart = this.role.title || '';
-    return `${userPart} (${rolePart})`;
+    if (this.user) {
+      const userPart = this.user.first_name || this.user.username;
+      const rolePart = (this.role) ? this.role.title : '';
+      return `${userPart} (${rolePart})`;
+    }
+    return '';
   }
 
   ngOnInit() {
