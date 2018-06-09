@@ -57,14 +57,18 @@
             <img src="../../../assets/images/avatar.png" class="logo img-fluid rounded-circle">
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <span *ngIf="user; then roleControl; else userFallback">
-                <ng-template #roleControl><app-role-control></app-role-control></ng-template>
-                <ng-template #userFallback>
-                  <div class='dropdown-item'>
-                    fuck
-                  </div> 
-                </ng-template>
+            <span *ngIf="user; else userFallback">
+                <app-role-control></app-role-control>
             </span>
+            <ng-template #userFallback>
+                <a [href]="fallback_url">
+                  <div class='dropdown-item'>
+                    <span class="lnr lnr-unlink"></span> Oups, seems like we couldn't identify who you are... 
+                    <br/>
+                    Would you mind <i><a [href]="">signing in</a></i> again? :) 
+                  </div> 
+                </a>
+              </ng-template>
           </div>
         </li>
       </ul>

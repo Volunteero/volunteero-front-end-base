@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserRoleService } from '../../services/user-role/user-role.service';
 import { User } from '../../models/User';
 import { Role } from '../../models/Role';
+import { VolunteeroSpacesService } from '../../services/volunteero-spaces/volunteero-spaces.service';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -12,16 +13,21 @@ export class TopNavBarComponent implements OnInit {
 
   private user: User;
   private role: Role;
+  readonly fallback_url: string;
 
-  constructor(private roleService: UserRoleService) {
-    roleService.user$.subscribe(
+  constructor(
+    private userRoleService: UserRoleService, 
+    private vSpacesService: VolunteeroSpacesService 
+  ) {
+    userRoleService.user$.subscribe(
       user => {
         this.user = user;
       });
-    roleService.selectedRole$.subscribe(
+      userRoleService.selectedRole$.subscribe(
       role => {
         this.role = role;
       });
+      this.fallback_url = vSpacesService.getGatesUrl();
   }
 
   get displayName() {
