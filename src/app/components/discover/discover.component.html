@@ -17,22 +17,39 @@
     </div>
     <div class="col-md-8">
       <div class="form-group btn-group-toggle btn-group btn-group-justified" data-toggle="buttons">
-        <label (click)="onResourceTypeChanged('Anything', box.value)" class="col-auto btn btn-secondary active">
+        <label (click)="onResourceTypeChanged('any', box.value)" class="col-auto btn btn-secondary active">
           <input type="radio" name="options" id="option1" autocomplete="off" checked> Anything
         </label>
-        <label (click)="onResourceTypeChanged('Events', box.value)" class="col-auto btn btn-secondary">
+        <label (click)="onResourceTypeChanged('event', box.value)" class="col-auto btn btn-secondary">
           <input ng-change="onResourceTypeChanged($event)" ng-model="test" ng-value="1" type="radio" name="options" id="option2" autocomplete="off"> Events
         </label>
-        <label (click)="onResourceTypeChanged('Campaigns', box.value)" class="col-auto btn btn-secondary">
+        <label (click)="onResourceTypeChanged('campaign', box.value)" class="col-auto btn btn-secondary">
           <input type="radio" name="options" id="option3" autocomplete="off"> Campaigns
         </label>
-        <label (click)="onResourceTypeChanged('Organizations', box.value)" class="col-auto btn btn-secondary">
+        <label (click)="onResourceTypeChanged('organization', box.value)" class="col-auto btn btn-secondary">
           <input type="radio" name="options" id="option3" autocomplete="off"> Organizations
         </label>
       </div>
     </div>
   </div>
   <div class="row top-space">
+    <div *ngIf="noResults" class="col-md-6 offset-md-3" style="margin-top: 10%">
+      <div class="row">
+        <div class="text-center  col-md-12">
+          <img src="../../../assets/images/ghost.JPG" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-center col-md-12">
+          <h2>No results have appeared</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-center col-md-12">
+          <h5>Try adding a search term or check your spelling to bring the results out of hiding.</h5>
+        </div>
+      </div>
+    </div>
     <!-- Events -->
     <div *ngIf="searchResults.events" class="offset-md-1 col-md-11">
       <app-discover-event *ngFor="let event of searchResults.events" [event]="event">

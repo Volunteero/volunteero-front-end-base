@@ -11,11 +11,12 @@ import { SearchResult } from '../../models/SearchResult';
 export class DiscoverComponent implements OnInit {
 
   searchResults: SearchResult;
-  selectedResourceType: String;
+  noResults: boolean;
+  selectedResourceType: string;
 
   constructor(private searchService: SearchService) {
 
-    this.selectedResourceType = 'Anything';
+    this.selectedResourceType = 'any';
   }
 
   ngOnInit() {
@@ -25,18 +26,27 @@ export class DiscoverComponent implements OnInit {
       organizations: [],
       campaigns: []
     };
+    this.noResults = true;
     this.search();
   }
 
-  onResourceTypeChanged(newSelectedResourceType: String, searchQuery: String) {
+  onResourceTypeChanged(newSelectedResourceType: string, searchQuery: string = '') {
 
     this.selectedResourceType = newSelectedResourceType;
     this.search(searchQuery);
   }
 
-  async search(searchQuery?: String) {
+  async search(searchQuery?: string) {
 
-    const result = await this.searchService.search(searchQuery, this.selectedResourceType);
+    let type = this.selectedResourceType.toLowerCase();
+    const result = await this.searchService.search(searchQuery, type);
+    if (result.campaigns.length + result.events.length + result.organizations.length === 0) {
+
+      this.noResults = true;
+    } else {
+
+      this.noResults = false;
+    }
     this.searchResults = result;
   }
 
