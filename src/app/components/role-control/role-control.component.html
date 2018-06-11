@@ -5,9 +5,10 @@
     <!-- TODO: add the edit and view incentives -->
     <h4>{{displayName}}</h4>
     <span *ngIf="selectedRole">
-      {{selectedRole.title | uppercase}}
+      <span class="lnr lnr-user"></span> {{selectedRole.title | uppercase}}
       <i>({{selectedRole.level}})</i>
-      <br/> {{selectedRole.location}}
+      <br/>
+      <span class="lnr lnr-map-marker" *ngIf="selectedRole.location"></span> {{selectedRole.location}}
     </span>
   </div>
 </div>
@@ -24,6 +25,7 @@
 </div> -->
 
 <div [class]="styling.divider"></div>
+
 <!-- List of available roles -->
 <div id="available-roles">
   <div [class]="styling.item" *ngFor="let role of knownRoles">
