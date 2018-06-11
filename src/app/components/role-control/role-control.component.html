@@ -5,14 +5,24 @@
     <!-- TODO: add the edit and view incentives -->
     <h4>{{displayName}}</h4>
     <span *ngIf="selectedRole">
-      <p>
-        {{selectedRole.title | uppercase}}
-        <i>({{selectedRole.level}})</i>
-        <br/> {{selectedRole.location}}
-      </p>
+      {{selectedRole.title | uppercase}}
+      <i>({{selectedRole.level}})</i>
+      <br/> {{selectedRole.location}}
     </span>
   </div>
 </div>
+<!-- Role controls -->
+<!-- TODO: decide if needed and apply nice styling if so... -->
+<!-- FIXME: I look ugly -->
+<!-- <div>
+  <div [class]="styling.item">
+    <span class="lnr lnr-eye"></span> profile
+  </div>
+  <div [class]="styling.item">
+    <span class="lnr lnr-cog"></span> settings
+  </div>
+</div> -->
+
 <div [class]="styling.divider"></div>
 <!-- List of available roles -->
 <div id="available-roles">
