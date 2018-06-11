@@ -29,6 +29,7 @@ export class UserRoleService {
   constructor(private http: HttpClient) {
     this.refresh();
     this.authRouteAggregator = new SimpleUrlAggregator('https://volunteero-auth.herokuapp.com/auth/');
+    this.authRouteAggregator.registerResource('roles', 'roles');
   }
 
   refresh() {
