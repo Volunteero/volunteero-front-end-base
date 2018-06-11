@@ -1,9 +1,29 @@
 export interface Role {
   id: string;
-  displayName: string;
+  // displayName: string;
   title: string;
-  level: string;
-  location: string;
-  imageUrl: string;
+  // level: string;
+  // location: string;
+  // imageUrl: string;
   accessToken: string;
+}
+
+export class SimpleRole implements Role {
+  // level: string;
+  // location: string;
+  // imageUrl: string;
+  accessToken: string;
+  constructor(public id: string, public title: string) { }
+
+  setAccessToken(tokenString: string) {
+    this.accessToken = tokenString;
+  }
+}
+
+export class RoleFactory {
+  static createSimpleRole(roleId: string, roleTitle: string, tokenString: string = ''): Role {
+    let role = new SimpleRole(roleId, roleTitle);
+    role.setAccessToken(tokenString);
+    return role;
+  }
 }
