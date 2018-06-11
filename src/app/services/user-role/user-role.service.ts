@@ -5,6 +5,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Role } from '../../models/Role';
 import { of } from 'rxjs/internal/observable/of';
 import { User } from '../../models/User';
+import { RouteAggregator, SimpleUrlAggregator } from '../../lib/RouteAggregator';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,6 +16,8 @@ const httpOptions = {
 })
 
 export class UserRoleService {
+  private authRouteAggregator: RouteAggregator;
+
   private userSource: BehaviorSubject<User> = new BehaviorSubject<User>(userStub);
   private selectedRoleSource: BehaviorSubject<Role> = new BehaviorSubject<Role>(roleStub);
   private knownRolesSource: BehaviorSubject<Role[]> = new BehaviorSubject<Role[]>([roleStub]);
@@ -25,8 +28,7 @@ export class UserRoleService {
 
   constructor(private http: HttpClient) {
     this.refresh();
-    // TODO: create a reusable object to save routes
-    
+    this.authRouteAggregator = new SimpleUrlAggregator('https://volunteero-auth.herokuapp.com/auth/');
   }
 
   refresh() {
@@ -52,6 +54,9 @@ export class UserRoleService {
     console.log('RC: getting uyser roles')
     console.log(user)
     if(user && user.accessToken){
+      let params = new URLSearchParams();
+      params.append('accessToken', user.accessToken);
+      // https://volunteero-auth.herokuapp.com/auth/roles?accessToken=....
       // this.http.get();
     }
   }
