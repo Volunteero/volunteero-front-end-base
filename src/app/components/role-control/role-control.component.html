@@ -1,12 +1,15 @@
 <!-- Current role -->
-<div [class]="styling.item" id="current-role" routerLink="/profile">
+<!-- !_! Notice the redirect here !_! -->
+<div [class]="styling.item" id="current-role" [routerLink]="['/profile']" [queryParams]="{role: selectedRole.id}">
   <!-- TODO: make user logo image appear in line with the text? -->
   <div>
     <!-- TODO: add the edit and view incentives -->
     <h4>{{displayName}}</h4>
     <span *ngIf="selectedRole">
       <span class="lnr lnr-user"></span> {{selectedRole.title | uppercase}}
-      <i> <span *ngIf="selectedRole.level">({{selectedRole.level}})</span></i>
+      <i>
+        <span *ngIf="selectedRole.level">({{selectedRole.level}})</span>
+      </i>
       <br/>
       <span class="lnr lnr-map-marker" *ngIf="selectedRole.location"></span> {{selectedRole.location}}
     </span>
