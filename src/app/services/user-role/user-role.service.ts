@@ -25,10 +25,12 @@ export class UserRoleService {
 
   constructor(private http: HttpClient) {
     this.refresh();
+    // TODO: create a reusable object to save routes
+    
   }
 
   refresh() {
-    console.log('Yo');
+    this.getUserRoles();
     this.selectedRoleSource.next(rolesStub[0]);
     this.knownRolesSource.next(rolesStub);
   }
@@ -37,11 +39,21 @@ export class UserRoleService {
     console.log('RoleService: setting user');
     this.userSource.next(user);
     console.log(this.user$)
+    this.refresh();
   }
 
   setCurrentRole(role: Role) {
     console.log('RoleService: setting role');
     this.selectedRoleSource.next(role);
+  }
+
+  getUserRoles(){
+    const user = this.userSource.getValue();
+    console.log('RC: getting uyser roles')
+    console.log(user)
+    if(user && user.accessToken){
+      // this.http.get();
+    }
   }
 }
 

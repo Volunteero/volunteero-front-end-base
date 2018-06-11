@@ -44,22 +44,9 @@ export class RoleControlComponent implements OnInit {
    */
 
   get displayName() {
-    if (this.selectedRole) {
-      return (this.selectedRole.displayName !== '') ? this.selectedRole
-        : this.fullName;
-    }
-    console.warn('A selectedRole is not available...')
-  }
-
-  get fullName() {
     if (this.user) {
-      const firstNamePart = this.user.first_name;
-      const secondNamePart = (
-        typeof this.user.last_name === 'string' && this.user.last_name !== ''
-      ) ? ` ${this.user.last_name}` : '';
-      return `${firstNamePart}${secondNamePart}`
+      return this.user.first_name || this.user.username;
     }
-    console.warn('A user is not available...')
   }
 
   /**
