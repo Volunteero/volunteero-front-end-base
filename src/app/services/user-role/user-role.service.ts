@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Role } from '../../models/Role';
@@ -55,10 +55,12 @@ export class UserRoleService {
     console.log('RC: getting uyser roles')
     console.log(user)
     if (user && user.accessToken) {
-      let params = new URLSearchParams();
-      params.append('accessToken', user.accessToken);
-      // https://volunteero-auth.herokuapp.com/auth/roles?accessToken=....
-      // this.http.get();
+      const url = this.authRouteAggregator.getResourceRoute('roles');
+      let params = new HttpParams().set('accessToken', user.accessToken);
+      this.http.get(url, {params: params}).subscribe((data)=>{
+        console.log('URS: got roles response!');
+        console.log(data);
+      });
     }
   }
 }

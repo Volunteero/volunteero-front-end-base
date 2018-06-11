@@ -15,6 +15,11 @@ export class SimpleUrlAggregator implements RouteAggregator {
     this.resourceDirectory[name] = resourceRoute;
   }
   getResourceRoute(name: string): string {
-    return this.resourceDirectory[name];
+    const base = this._stripEndingSlash(this.baseRoute);
+    const resource = this.resourceDirectory[name];
+    return `${base}/${resource}`;
+  }
+  private _stripEndingSlash(str: string) {
+    return str.replace(/\:$/, '');
   }
 }
