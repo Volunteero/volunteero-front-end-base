@@ -49,11 +49,11 @@ export class UserRoleService {
     this.selectedRoleSource.next(role);
   }
 
-  getUserRoles(){
+  getUserRoles() {
     const user = this.userSource.getValue();
     console.log('RC: getting uyser roles')
     console.log(user)
-    if(user && user.accessToken){
+    if (user && user.accessToken) {
       let params = new URLSearchParams();
       params.append('accessToken', user.accessToken);
       // https://volunteero-auth.herokuapp.com/auth/roles?accessToken=....
