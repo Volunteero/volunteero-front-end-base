@@ -6,7 +6,7 @@
     <h4>{{displayName}}</h4>
     <span *ngIf="selectedRole">
       <span class="lnr lnr-user"></span> {{selectedRole.title | uppercase}}
-      <i>({{selectedRole.level}})</i>
+      <i> <span *ngIf="selectedRole.level">({{selectedRole.level}})</span></i>
       <br/>
       <span class="lnr lnr-map-marker" *ngIf="selectedRole.location"></span> {{selectedRole.location}}
     </span>

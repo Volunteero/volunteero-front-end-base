@@ -33,8 +33,6 @@ export class UserRoleService {
 
   refresh() {
     this.getUserRoles();
-    this.selectedRoleSource.next(rolesStub[0]);
-    this.knownRolesSource.next(rolesStub);
   }
 
   setUser(user: User) {
@@ -59,8 +57,14 @@ export class UserRoleService {
       this.http.get(url, { params: params }).subscribe((data: { roles: string[] }) => {
         console.log('URS: got roles response!');
         console.log(data);
-        const roles = UserRoleService._parseRolesFromApiData(data.roles);
-        console.log(roles);
+        const responseRoles = UserRoleService._parseRolesFromApiData(data.roles);
+        console.log(responseRoles);
+
+        // FIXME: should be removed when a proper BE solution is implemented 
+        let roles = [UserRoleService._getGenericVolunteeroRole()];
+        roles = roles.concat(responseRoles);
+
+        this.knownRolesSource.next(roles);
       });
     }
   }
@@ -74,6 +78,13 @@ export class UserRoleService {
       console.warn('URS: access token is not retrievable!');
       return RoleFactory.createSimpleRole(roleId, roleTitleString);
     })
+  }
+
+  /**
+   * FIXME: implement a proper role backend policy so that this is not needed
+   */
+  static _getGenericVolunteeroRole(): Role {
+    return RoleFactory.createGenericVolunteeroRole();
   }
 }
 
@@ -90,42 +101,10 @@ const userStub = {
   accessToken: ''
 }
 
-const roleStub = {
-  id: '1',
-  displayName: '',
-  title: 'Volunteer',
-  level: 'hero',
-  location: 'Eindhoven',
-  imageUrl: '',
-  accessToken: ''
-}
+const roleStub = RoleFactory.createGenericVolunteeroRole();
 
 const rolesStub = [
-  {
-    id: '1',
-    displayName: '',
-    title: 'Volunteer',
-    level: 'hero',
-    location: 'Eindhoven',
-    imageUrl: '',
-    accessToken: ''
-  }, {
-    id: '2',
-    displayName: '',
-    title: 'UNESCO',
-    level: 'member',
-    location: 'worldwide',
-    imageUrl: '',
-    accessToken: ''
-  }, {
-    id: '3',
-    displayName: '',
-    title: 'WWF',
-    level: 'moderator',
-    location: 'worldwide',
-    imageUrl: '',
-    accessToken: ''
-  }
+  {}
 ];
 
 

@@ -1,5 +1,3 @@
 <p>
-  <i>{{role.title}}</i>
-  <br/>
-  ({{role.level}})
+  <i>{{role.title}} <span *ngIf="role.level">({{role.level}})</span></i>
 </p>
