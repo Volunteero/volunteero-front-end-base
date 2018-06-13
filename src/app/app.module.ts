@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SupportersComponent } from './components/activity/supporters/supporters
     CampaignComponent,
     ActivityComponent,
     TimelineComponent,
-    SupportersComponent
+    SupportersComponent,
+    ProfileHeaderComponent
   ],
   imports: [
     BrowserModule,
