@@ -44,6 +44,7 @@ export class UserRoleService {
 
   setCurrentRole(role: Role) {
     console.log('RoleService: setting role');
+    console.warn('RoleService: need assume role call implemented - a BE impediment');
     this.selectedRoleSource.next(role);
   }
 
