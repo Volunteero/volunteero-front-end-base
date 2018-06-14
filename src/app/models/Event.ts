@@ -1,5 +1,5 @@
 export interface Event {
-  _id: String;
+  id: String;
   name: String;
   description: String;
   start: String;

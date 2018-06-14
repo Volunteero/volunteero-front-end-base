@@ -1,5 +1,5 @@
 export interface Organisation {
-    organization_id: String;
+    id: String;
     user_id: String;
     event_ids: Array<String>;
     campaign_ids: Array<String>;
