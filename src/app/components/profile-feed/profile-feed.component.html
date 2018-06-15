@@ -5,6 +5,11 @@
         <!-- Feed tab switchers -->
         <ul class="list-inline">
           <li class="list-inline-item mr-4" *ngFor="let tab of tabs">
+            <!-- 
+              The style attribute is set to work around the annoying quirk 
+              of angular + bootstrap combo... 
+              see https://stackoverflow.com/questions/41537122/why-angular2-click-event-is-not-firing-on-a-div/41538511 
+            -->
             <div  
               id="tab.id"
               style="position: relative; z-index: 10000;"  
