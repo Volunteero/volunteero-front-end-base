@@ -19,6 +19,8 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
 import { ProfileFeedComponent } from './components/profile-feed/profile-feed.component';
+import { FeedEventsComponent } from './components/profile-feed/feed-events/feed-events.component';
+import { FeedCampaignsComponent } from './components/profile-feed/feed-campaigns/feed-campaigns.component';
 
 
 @NgModule({
@@ -37,12 +39,18 @@ import { ProfileFeedComponent } from './components/profile-feed/profile-feed.com
     ActivityComponent,
     TimelineComponent,
     SupportersComponent,
-    ProfileFeedComponent
+    ProfileFeedComponent,
+    FeedEventsComponent,
+    FeedCampaignsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    FeedEventsComponent,
+    FeedCampaignsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

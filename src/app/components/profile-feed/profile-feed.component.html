@@ -5,8 +5,13 @@
         <!-- Feed tab switchers -->
         <ul class="list-inline">
           <li class="list-inline-item mr-4" *ngFor="let tab of tabs">
-            <div id="tab.id">
-              <h5>{{tab.title}}</h5>
+            <div  
+              id="tab.id"
+              style="position: relative; z-index: 10000;"  
+              (click)="selectTab(tab)">
+              <h5 >
+                {{tab.title}}
+              </h5>
             </div>
           </li>
         </ul>
@@ -19,4 +24,7 @@
       </div>
     </div>
   </div>
+</section>
+<section>
+  <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
 </section>
