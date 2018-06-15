@@ -12,7 +12,7 @@ export class ProfileHeaderComponent implements OnInit {
     displayName: '',
     location: '',
     points: 0,
-    contactName: 'string',
+    contactName: '',
   };
 
   @Input()
