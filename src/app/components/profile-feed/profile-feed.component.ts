@@ -9,10 +9,14 @@ import { FeedCampaignsComponent } from './feed-campaigns/feed-campaigns.componen
 })
 export class ProfileFeedComponent implements OnInit {
 
+  // Feed tab controls
   private _tabs;
+  // Profile extra actions
+  private _extras;
+
 
   constructor() {
-    // TODO: make a Tab class and all
+    // TODO: FIXME: make a Tab class and all
     this._tabs = [
       {
         title: 'Events',
@@ -27,11 +31,38 @@ export class ProfileFeedComponent implements OnInit {
         active: false
       }
     ];
+    // FIXME: that's not nice either! - resolve actions based on permissions?
+    // Notice the reuse of title, id and generally reoccuring idea...
+    this._extras = [
+      // That's just a mock data - please don't take seriously!
+      // TODO: add lnr icons?
+      {
+        title: 'Compare',
+        id: 'compare-profile',
+        authorized: false
+      },
+      {
+        title: 'Edit',
+        id: 'edit-profile',
+        authorized: true
+      },
+      {
+        title: 'Delete',
+        id: 'delete-profile',
+        authorized: false
+      }
+    ]
     this._tabs[0].active = true;
   }
 
   get tabs() {
     return this._tabs;
+  }
+
+  get extraActions() {
+    // TODO: investigate why
+    // withour reverse, edit ended up the first 
+    return this._extras.filter((action)=>action.authorized).reverse();
   }
 
   get selectedComponent() {

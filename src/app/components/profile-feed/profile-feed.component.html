@@ -1,7 +1,7 @@
 <section id="header" class="">
   <div class="container">
     <div class="row" id="feed-header">
-      <div class="col-10" id="feed-tabs">
+      <div class="col-10 col-sm-8" id="feed-tabs">
         <!-- Feed tab switchers -->
         <ul class="list-inline">
           <li class="list-inline-item mr-4" *ngFor="let tab of tabs">
@@ -10,21 +10,20 @@
               of angular + bootstrap combo... 
               see https://stackoverflow.com/questions/41537122/why-angular2-click-event-is-not-firing-on-a-div/41538511 
             -->
-            <div  
-              id="tab.id"
-              style="position: relative; z-index: 10000;"  
-              (click)="selectTab(tab)">
-              <h5 >
+            <div id="tab.id" style="position: relative; z-index: 10000;" (click)="selectTab(tab)">
+              <h5>
                 {{tab.title}}
               </h5>
             </div>
           </li>
         </ul>
       </div>
-      <div class="col-2" id="feed-extras">
+      <!-- Extra profile actions -->
+      <div class="col-2 col-sm-4" id="feed-extras">
         <ul class="list-inline">
-          <li class="list-inline-item">Lorem</li>
-          <li class="list-inline-item">Phasellus</li>
+          <li class="list-inline-item float-right ml-2" *ngFor="let action of extraActions">
+            {{action.title}}
+          </li>
         </ul>
       </div>
     </div>
