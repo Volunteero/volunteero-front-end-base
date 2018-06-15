@@ -7,7 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileFeedComponent implements OnInit {
 
-  constructor() { }
+  private _tabs;
+
+  constructor() { 
+    this._tabs = [
+      {
+        title:'Events',
+        id: 'event-feed-cap'
+      },
+      {
+        title:'Campaigns',
+        id: 'event-feed-cap'
+      }
+    ]
+  }
+
+  get tabs() {
+    return this._tabs;
+  }
 
   ngOnInit() {
   }
