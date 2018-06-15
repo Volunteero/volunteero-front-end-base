@@ -47,14 +47,11 @@ export class ProfileFeedComponent implements OnInit {
 
   // TODO: consider this horrible method while refactoring!
   selectTab(selectedTab){
-    console.log('selecting');
-    console.log(selectedTab);
+    console.log(`Switching to ${selectedTab.id}`);
     this._tabs = this._tabs.map((tab)=>{
       tab.active = (tab.id === selectedTab.id);
-      console.log(tab);
       return tab;
     });
-    console.log(this._tabs);
   }
 
   ngOnInit() {
