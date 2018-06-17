@@ -1,0 +1,5 @@
+.tab-cap.selected-tab{
+  /* padding-bottom: 1px; */
+  color: #359ccd;
+  border-bottom: 2px #5eb0d7 solid;
+}
