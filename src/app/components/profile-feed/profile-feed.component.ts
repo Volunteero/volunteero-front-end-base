@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedEventsComponent } from './feed-events/feed-events.component';
 import { FeedCampaignsComponent } from './feed-campaigns/feed-campaigns.component';
+import { ActionCapFactory, ComponentSwitchCap, ActionCap } from './lib/ActionCap';
 
 @Component({
   selector: 'app-profile-feed',
@@ -14,45 +15,43 @@ export class ProfileFeedComponent implements OnInit {
   // Profile extra actions
   private _extras;
 
+  private _retrieveTabs(): Array<ActionCap> {
+    return [
+      ActionCapFactory
+        .createComponentSwitchCap(
+          'Events', 'event-feed-cap', FeedEventsComponent
+        ).activate(),
+      ActionCapFactory
+        .createComponentSwitchCap(
+          'Campaigns', 'campaign-feed-cap', FeedCampaignsComponent
+        )
+    ];
+  }
+
+  private _retrieveExtraActions(): Array<ActionCap> {
+    return [
+      // This one is added just for the sake of verifying the concept...
+      ActionCapFactory.createRouteSwitchCap(
+        'Compare', 'compare-profile', ''
+      ).authorize(),
+      
+      // This one takes the user to the edit profile
+      ActionCapFactory.createRouteSwitchCap(
+        'Edit', 'edit-profile', '/profile/edit'
+      ).authorize(),
+
+      // Is not rendered out becuase it is not authorized - also to verify
+      ActionCapFactory.createRouteSwitchCap(
+        'Follow', 'follow-profile', ''
+      ),
+    ];
+  }
 
   constructor() {
-    // TODO: FIXME: make a Tab class and all
-    this._tabs = [
-      {
-        title: 'Events',
-        id: 'event-feed-cap',
-        component: FeedEventsComponent,
-        active: false
-      },
-      {
-        title: 'Campaigns',
-        id: 'campaign-feed-cap',
-        component: FeedCampaignsComponent,
-        active: false
-      }
-    ];
-    // FIXME: that's not nice either! - resolve actions based on permissions?
-    // Notice the reuse of title, id and generally reoccuring idea...
-    this._extras = [
-      // That's just a mock data - please don't take seriously!
-      // TODO: add lnr icons?
-      {
-        title: 'Compare',
-        id: 'compare-profile',
-        authorized: false
-      },
-      {
-        title: 'Edit',
-        id: 'edit-profile',
-        authorized: true
-      },
-      {
-        title: 'Delete',
-        id: 'delete-profile',
-        authorized: false
-      }
-    ]
-    this._tabs[0].active = true;
+
+    this._tabs = this._retrieveTabs();
+
+    this._extras = this._retrieveExtraActions();
   }
 
   get tabs() {
@@ -62,7 +61,7 @@ export class ProfileFeedComponent implements OnInit {
   get extraActions() {
     // TODO: investigate why
     // withour reverse, edit ended up the first 
-    return this._extras.filter((action)=>action.authorized).reverse();
+    return this._extras.filter((action) => action.authorized).reverse();
   }
 
   get selectedComponent() {
@@ -77,9 +76,9 @@ export class ProfileFeedComponent implements OnInit {
   }
 
   // TODO: consider this horrible method while refactoring!
-  selectTab(selectedTab){
+  selectTab(selectedTab) {
     console.log(`Switching to ${selectedTab.id}`);
-    this._tabs = this._tabs.map((tab)=>{
+    this._tabs = this._tabs.map((tab: ComponentSwitchCap) => {
       tab.active = (tab.id === selectedTab.id);
       return tab;
     });
