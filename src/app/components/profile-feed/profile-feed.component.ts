@@ -32,7 +32,7 @@ export class ProfileFeedComponent implements OnInit {
     return [
       // This one is added just for the sake of verifying the concept...
       ActionCapFactory.createRouteSwitchCap(
-        'Compare', 'compare-profile', ''
+        'Compare', 'compare-profile', 'ratings'
       ).authorize(),
       
       // This one takes the user to the edit profile
