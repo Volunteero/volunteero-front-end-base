@@ -1,3 +1,15 @@
+export interface ResponseRole {
+  /**
+   * same as title, but requires extra parsing
+   */
+  role: string; 
+  /**
+   *  permissions set for the role in format: {organization: [permissions]}
+   */
+  permissions: Array<any>;
+
+}
+
 export interface Role {
   id?: string;
   // displayName: string;

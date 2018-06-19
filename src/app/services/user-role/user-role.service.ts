@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Role, RoleFactory } from '../../models/Role';
+import { Role, RoleFactory, ResponseRole } from '../../models/Role';
 import { User } from '../../models/User';
 import { RouteAggregator, SimpleUrlAggregator } from '../../lib/RouteAggregator';
 
@@ -55,7 +55,7 @@ export class UserRoleService {
     if (user && user.accessToken) {
       const url = this.authRouteAggregator.getResourceRoute('roles');
       let params = new HttpParams().set('accessToken', user.accessToken);
-      this.http.get(url, { params: params }).subscribe((data: { roles: string[] }) => {
+      this.http.get(url, { params: params }).subscribe((data: { roles: ResponseRole[] }) => {
         console.log('URS: got roles response!');
         console.log(data);
         const responseRoles = UserRoleService._parseRolesFromApiData(data.roles);
@@ -70,14 +70,14 @@ export class UserRoleService {
     }
   }
 
-  static _parseRolesFromApiData(roles: string[]): Role[] {
-    return roles.map((roleTitleString, index) => {
+  static _parseRolesFromApiData(roles: ResponseRole[]): Role[] {
+    return roles.map((role, index) => {
       /**
        * Now is initiliazed arbitrarily as we do not really have role ids
        */
-      const roleId = `${index}_${roleTitleString}`;
+      const roleId = `${index}_${role.role}`;
       console.warn('URS: access token is not retrievable!');
-      return RoleFactory.createSimpleRole(roleId, roleTitleString);
+      return RoleFactory.createSimpleRole(roleId, role.role);
     })
   }
 
