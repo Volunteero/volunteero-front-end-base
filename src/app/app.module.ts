@@ -43,7 +43,7 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
     RoleControlComponent,
     ListRoleComponent,
     ProfileHeaderComponent,
-    CreateOrganizationComponen
+    CreateOrganizationComponent
   ],
   imports: [
     BrowserModule,
