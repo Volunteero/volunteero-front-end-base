@@ -19,6 +19,7 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ProfileHeaderComponent } from './components/profile-header/profile-head
     ActivityComponent,
     TimelineComponent,
     SupportersComponent,
-    ProfileHeaderComponent
+    ProfileHeaderComponent,
+    CreateOrganizationComponent
   ],
   imports: [
     BrowserModule,
