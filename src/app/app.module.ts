@@ -19,6 +19,10 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
 import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
+import { CreatorInfoOverviewComponent } from './components/create/creator-info-overview/creator-info-overview.component';
+import { CreateEventComponent } from './components/create/create-event/create-event.component';
+import { CreateCampaignComponent } from './components/create/create-campaign/create-campaign.component';
+import { CreateSponsorshipComponent } from './components/create/create-sponsorship/create-sponsorship.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
     ActivityComponent,
     TimelineComponent,
     SupportersComponent,
-    CreateOrganizationComponent
+    CreateOrganizationComponent,
+    CreatorInfoOverviewComponent,
+    CreateEventComponent,
+    CreateCampaignComponent,
+    CreateSponsorshipComponent
   ],
   imports: [
     BrowserModule,
