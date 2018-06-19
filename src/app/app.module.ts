@@ -20,6 +20,8 @@ import { TimelineComponent } from './components/activity/timeline/timeline.compo
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
 import { RoleControlComponent } from './components/role-control/role-control.component';
 import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { ListRoleComponent } from './components/role-control/list-role/list-role
     TimelineComponent,
     SupportersComponent,
     RoleControlComponent,
-    ListRoleComponent
+    ListRoleComponent,
+    ProfileHeaderComponent,
+    CreateOrganizationComponen
   ],
   imports: [
     BrowserModule,
