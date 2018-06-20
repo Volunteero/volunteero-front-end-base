@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-create-event',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  createEvent(name: string, description: string, start: string, end: string, location: string,
+              volunteers: string, category: string, points: number) {
+
+    console.log(event);
+
   }
 
 }
