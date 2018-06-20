@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserRoleService } from '../../services/user-role/user-role.service';
-import { Role } from '../../models/Role';
+import { Role, RoleFactory } from '../../models/Role';
 import { User } from '../../models/User';
 
 @Component({
@@ -43,10 +43,23 @@ export class RoleControlComponent implements OnInit {
    * Computed properties
    */
 
-  get displayName() {
+  get displayName() :String {
     if (this.user) {
       return this.user.first_name || this.user.username;
     }
+  }
+
+  get profileRouterLink() : String {
+    const routeBase = '/profile';
+    if(this.selectedRole.entityId !== RoleFactory.createGenericVolunteeroRole().entityId){
+      const extra = this.selectedRole.entityId;
+      return `${routeBase}/${extra}`;
+    }
+    return routeBase;
+  }
+
+  get accessToken() : String{ 
+    return this.userRoleService.activeAccessToken;
   }
 
   /**
