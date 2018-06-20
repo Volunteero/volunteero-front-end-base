@@ -1,13 +1,13 @@
 export interface Event {
-  id: string;
-  name: string;
-  description: string;
-  start: string;
-  end: string;
-  location: string;
-  volunteers: number;
-  category: string;
-  points: number;
-  organizationId: string;
+  id: String;
+  name: String;
+  description: String;
+  start: String;
+  end: String;
+  location: String;
+  volunteers: Number;
+  category: String;
+  points: Number;
+  organization_id: String;
   available: boolean;
 }
