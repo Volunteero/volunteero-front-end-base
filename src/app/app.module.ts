@@ -14,11 +14,20 @@ import { EventsComponent } from './components/home/events/events.component';
 import { EventComponent } from './components/home/events/event/event.component';
 import { CampaignsComponent } from './components/home/campaigns/campaigns.component';
 import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { DiscoverEventComponent } from './components/discover/discover-event/discover-event.component';
+import { DiscoverCampaignComponent } from './components/discover/discover-campaign/discover-campaign.component';
+import { DiscoverOrganizationComponent } from './components/discover/discover-organization/discover-organization.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
-
+import { ProfileFeedComponent } from './components/profile-feed/profile-feed.component';
+import { FeedEventsComponent } from './components/profile-feed/feed-events/feed-events.component';
+import { FeedCampaignsComponent } from './components/profile-feed/feed-campaigns/feed-campaigns.component';
+import { RoleControlComponent } from './components/role-control/role-control.component';
+import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +42,28 @@ import { SupportersComponent } from './components/activity/supporters/supporters
     EventComponent,
     CampaignsComponent,
     CampaignComponent,
+    DiscoverEventComponent,
+    DiscoverCampaignComponent,
+    DiscoverOrganizationComponent,
     ActivityComponent,
     TimelineComponent,
-    SupportersComponent
+    SupportersComponent,
+    ProfileFeedComponent,
+    FeedEventsComponent,
+    FeedCampaignsComponent,
+    RoleControlComponent,
+    ListRoleComponent,
+    ProfileHeaderComponent,
+    CreateOrganizationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    FeedEventsComponent,
+    FeedCampaignsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,9 +10,10 @@ import {CampaignsComponent} from '../components/home/campaigns/campaigns.compone
 import {ActivityComponent} from '../components/activity/activity.component';
 import {TimelineComponent} from '../components/activity/timeline/timeline.component';
 import {SupportersComponent} from '../components/activity/supporters/supporters.component';
+import {CreateOrganizationComponent} from '../components/create/create-organization/create-organization.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home/events', pathMatch: 'full'},
+  {path: '', redirectTo: 'home/events', pathMatch: 'full'},
   {
     path: 'home', component: HomeComponent, children: [
       {path: '', redirectTo: 'events', pathMatch: 'full'},
@@ -21,9 +22,12 @@ const routes: Routes = [
     ]
   },
   {path: 'discover', component: DiscoverComponent},
-  {path: 'create', component: CreateComponent},
+  {
+    path: 'create', component: CreateComponent, children: [
+      {path: 'organization', component: CreateOrganizationComponent}
+    ]
+  },
   {path: 'profile', component: UserProfileComponent},
-
 
   {path: 'events/:id', redirectTo: '/events/:id/timeline', pathMatch: 'full'},
 

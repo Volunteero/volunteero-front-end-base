@@ -1,0 +1,29 @@
+.tab-cap:hover {
+  cursor: pointer;
+  color: #5eb0d7;
+  border-bottom: 2px #87c4e1 solid;
+}
+.tab-cap.selected-tab{
+  /* padding-bottom: 1px; */
+  color: #359ccd;
+  border-bottom: 2px #5eb0d7 solid;
+}
+
+p.extra-action,
+h1.extra-action,
+h2.extra-action,
+h3.extra-action,
+h4.extra-action,
+h5.extra-action,
+h6.extra-action {
+  line-height: 1;
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: #aaa;
+  border: 2px #bbb dashed;
+}
+.extra-action:hover{
+  cursor: pointer;
+  color: #359ccd;
+  border: 2px #5eb0d7 dashed;
+}
