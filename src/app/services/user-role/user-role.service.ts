@@ -75,9 +75,9 @@ export class UserRoleService {
       /**
        * Now is initiliazed arbitrarily as we do not really have role ids
        */
-      const roleId = `${index}_${role.role}`;
+      const roleId = `${index}_${role.roleName}`;
       console.warn('URS: access token is not retrievable!');
-      return RoleFactory.createSimpleRole(roleId, role.role);
+      return RoleFactory.createLeveledRole(role);
     })
   }
 

@@ -1,12 +1,12 @@
 export interface ResponseRole {
+  entityType?: string;
+  entityIdentifier?: string;
+  roleName: string;
+  arn: string;
   /**
-   * same as title, but requires extra parsing
+   *  permissions set for the role in format: 
    */
-  role: string; 
-  /**
-   *  permissions set for the role in format: {organization: [permissions]}
-   */
-  permissions: Array<any>;
+  permissions: string[];
 
 }
 
@@ -56,5 +56,9 @@ export class RoleFactory {
    */
   static createGenericVolunteeroRole(): Role {
     return new LeveledRole('v_volunteero', 'Volunteer', 'hero');
+  }
+
+  static createLeveledRole(role: ResponseRole): Role {
+    return new LeveledRole(role.arn, role.entityType, role.roleName)
   }
 }
