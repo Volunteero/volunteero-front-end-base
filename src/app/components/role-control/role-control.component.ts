@@ -49,6 +49,11 @@ export class RoleControlComponent implements OnInit {
     }
   }
 
+
+  get accessToken(){ 
+    return this.userRoleService.activeToken;
+  }
+
   /**
    * Logic
    */

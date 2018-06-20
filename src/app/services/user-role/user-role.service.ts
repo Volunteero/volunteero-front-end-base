@@ -29,11 +29,20 @@ export class UserRoleService {
     this.refresh();
     this.authRouteAggregator = new SimpleUrlAggregator('https://volunteero-auth.herokuapp.com/auth/');
     this.authRouteAggregator.registerResource('roles', 'roles');
+    this.authRouteAggregator.registerResource('assumeRole', 'assumeOrganisationRole');
   }
 
   refresh() {
     this.getUserRoles();
   }
+
+
+  get activeToken(): String { 
+    const roleToken = this.selectedRoleSource.getValue().accessToken;
+    const userToken = this.userSource.getValue().accessToken;
+    return roleToken || userToken;
+  }
+
 
   setUser(user: User) {
     console.log('RoleService: setting user');
@@ -45,7 +54,15 @@ export class UserRoleService {
   setCurrentRole(role: Role) {
     console.log('RoleService: setting role');
     console.warn('RoleService: need assume role call implemented - a BE impediment');
-    this.selectedRoleSource.next(role);
+    this._assumeRole(role).then((tokenString) => {
+      console.log('Got the role token')
+      // console.log(tokenString);
+      role.setAccessToken(tokenString)
+      console.log(role);
+      this.selectedRoleSource.next(role);
+    }).catch((error) => {
+      console.error(error);
+    })
   }
 
   getUserRoles() {
@@ -70,6 +87,39 @@ export class UserRoleService {
     }
   }
 
+  private _assumeRole(role: Role): Promise<string> {
+    const user = this.userSource.getValue();
+
+    if (role.entityId === RoleFactory.createGenericVolunteeroRole().entityId) {
+      return new Promise((_res) => {
+        _res("");
+      })
+    }
+
+    const url = this.authRouteAggregator.getResourceRoute('assumeRole');
+    let params = new HttpParams()
+      .set('accessToken', user.accessToken)
+      .set('organisationId', role.entityId);
+
+
+    return new Promise((_res, _rej) => {
+      this.http.get(url, { params: params })
+        .subscribe((data: any) => {
+          console.log('URS: got assume token response response!');
+          console.log(data);
+          if (data.success
+            && typeof data.accessToken === 'string'
+            && data.accessToken !== '') {
+
+            return _res(data.accessToken);
+          } else {
+            return _rej(new Error('got invalid token response'))
+          }
+        });
+    })
+
+  }
+
   static _parseRolesFromApiData(roles: ResponseRole[]): Role[] {
     return roles.map((role, index) => {
       /**
@@ -80,6 +130,7 @@ export class UserRoleService {
       return RoleFactory.createLeveledRole(role);
     })
   }
+
 
   /**
    * FIXME: implement a proper role backend policy so that this is not needed
