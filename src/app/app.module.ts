@@ -14,10 +14,13 @@ import { EventsComponent } from './components/home/events/events.component';
 import { EventComponent } from './components/home/events/event/event.component';
 import { CampaignsComponent } from './components/home/campaigns/campaigns.component';
 import { CampaignComponent } from './components/home/campaigns/campaign/campaign.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
+import { RoleControlComponent } from './components/role-control/role-control.component';
+import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
 import { CreatorInfoOverviewComponent } from './components/create/creator-info-overview/creator-info-overview.component';
 import { CreateEventComponent } from './components/create/create-event/create-event.component';
@@ -45,7 +48,12 @@ import { CreateSponsorshipComponent } from './components/create/create-sponsorsh
     CreatorInfoOverviewComponent,
     CreateEventComponent,
     CreateCampaignComponent,
-    CreateSponsorshipComponent
+    CreateSponsorshipComponent,
+    RoleControlComponent,
+    ListRoleComponent,
+    ProfileHeaderComponent,
+    CreateOrganizationComponent
+
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ import {CreateCampaignComponent} from '../components/create/create-campaign/crea
 import {CreateSponsorshipComponent} from '../components/create/create-sponsorship/create-sponsorship.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home/events', pathMatch: 'full'},
+  {path: '', redirectTo: 'home/events', pathMatch: 'full'},
   {
     path: 'home', component: HomeComponent, children: [
       {path: '', redirectTo: 'events', pathMatch: 'full'},
