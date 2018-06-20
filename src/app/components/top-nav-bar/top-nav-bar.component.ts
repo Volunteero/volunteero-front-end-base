@@ -11,8 +11,8 @@ import { VolunteeroSpacesService } from '../../services/volunteero-spaces/volunt
 })
 export class TopNavBarComponent implements OnInit {
 
-  private user: User;
-  private role: Role;
+  public user: User;
+  public role: Role;
   readonly fallback_url: string;
 
   constructor(

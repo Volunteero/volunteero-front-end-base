@@ -14,7 +14,7 @@ export interface Role {
   entityId?: string;
   // displayName: string;
   title?: string;
-  // level: string;
+  level: string;
   // location: string;
   // imageUrl: string;
   accessToken?: string;
@@ -23,7 +23,7 @@ export interface Role {
 }
 
 export class SimpleRole implements Role {
-  // level: string;
+  level: string;
   // location: string;
   // imageUrl: string;
   accessToken: string;

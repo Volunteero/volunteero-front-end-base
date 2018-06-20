@@ -11,14 +11,14 @@ import { User } from '../../models/User';
 export class RoleControlComponent implements OnInit {
 
   @Input()
-  private styling = {
+  public styling = {
     item: "dropdown-item",
     divider: "dropdown-divider"
   }
 
-  private selectedRole: Role;
-  private knownRoles: Role[];
-  private user: User;
+  public selectedRole: Role;
+  public knownRoles: Role[];
+  public user: User;
 
   constructor(
     private userRoleService: UserRoleService
