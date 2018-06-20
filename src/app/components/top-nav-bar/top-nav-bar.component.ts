@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRoleService } from '../../services/user-role/user-role.service';
 import { User } from '../../models/User';
-import { Role } from '../../models/Role';
+import { Role, RoleFactory } from '../../models/Role';
 import { VolunteeroSpacesService } from '../../services/volunteero-spaces/volunteero-spaces.service';
 
 @Component({
@@ -41,6 +41,16 @@ export class TopNavBarComponent implements OnInit {
       return `${userPart} (${rolePart})`;
     }
     return '';
+  }
+
+  
+  get profileRouterLink() : String {
+    const routeBase = '/profile';
+    if(this.role.entityId !== RoleFactory.createGenericVolunteeroRole().entityId){
+      const extra = this.role.entityId;
+      return `${routeBase}/${extra}`;
+    }
+    return routeBase;
   }
 
   ngOnInit() {
