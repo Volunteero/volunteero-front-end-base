@@ -59,7 +59,7 @@ export class RoleControlComponent implements OnInit {
   }
 
   get accessToken() : String{ 
-    return this.userRoleService.activeToken;
+    return this.userRoleService.activeAccessToken;
   }
 
   /**

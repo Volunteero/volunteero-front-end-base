@@ -37,7 +37,7 @@ export class UserRoleService {
   }
 
 
-  get activeToken(): String { 
+  get activeAccessToken(): String { 
     const roleToken = this.selectedRoleSource.getValue().accessToken;
     const userToken = this.userSource.getValue().accessToken;
     return roleToken || userToken;
