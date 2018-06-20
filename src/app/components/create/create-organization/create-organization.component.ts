@@ -17,7 +17,7 @@ export class CreateOrganizationComponent implements OnInit {
 
   createOrganization(name: String, description: String) {
 
-    const organization = {'organizationName': name, 'organizationDescription': description} as Organization;
+    const organization = {'organization_name': name, 'organization_description': description};
     console.log(organization);
     this.organizationService.createOrganization(organization).subscribe(response => {
       console.log(response);

@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Organization} from '../../models/Organization';
 import {Observable} from 'rxjs/internal/Observable';
 import {catchError} from 'rxjs/operators';
 import {of} from 'rxjs/internal/observable/of';
+import {UserRoleService} from '../user-role/user-role.service';
+import {User} from '../../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +13,33 @@ import {of} from 'rxjs/internal/observable/of';
 export class OrganizationService {
   private baseUrl = 'http://localhost:1337/organizations';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userRoleService: UserRoleService) {
   }
 
-  createOrganization(organization: Organization): Observable<any> {
-    return this.http.post(this.baseUrl, organization).pipe(catchError(err => {
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+    params: null
+  };
+
+  createOrganization(organization: any): Observable<any> {
+    let retrievedUser: User;
+
+    this.userRoleService.user$.subscribe((user: User) => {
+      retrievedUser = user;
+
+    });
+    const accessToken = retrievedUser.accessToken;
+
+    // Update the request information with user id
+    organization.user_id = retrievedUser.id;
+
+    // Add the token in the url
+    this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
+
+    // Send the request
+    return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(catchError(err => {
       return of(err);
     }));
   }
