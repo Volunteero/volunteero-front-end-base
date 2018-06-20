@@ -21,6 +21,10 @@ import { DiscoverOrganizationComponent } from './components/discover/discover-or
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
+import { RoleControlComponent } from './components/role-control/role-control.component';
+import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { SupportersComponent } from './components/activity/supporters/supporters
     DiscoverOrganizationComponent,
     ActivityComponent,
     TimelineComponent,
-    SupportersComponent
+    SupportersComponent,
+    RoleControlComponent,
+    ListRoleComponent,
+    ProfileHeaderComponent,
+    CreateOrganizationComponent
   ],
   imports: [
     BrowserModule,
