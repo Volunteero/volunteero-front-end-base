@@ -21,11 +21,13 @@ import { DiscoverOrganizationComponent } from './components/discover/discover-or
 import { ActivityComponent } from './components/activity/activity.component';
 import { TimelineComponent } from './components/activity/timeline/timeline.component';
 import { SupportersComponent } from './components/activity/supporters/supporters.component';
+import { ProfileFeedComponent } from './components/profile-feed/profile-feed.component';
+import { FeedEventsComponent } from './components/profile-feed/feed-events/feed-events.component';
+import { FeedCampaignsComponent } from './components/profile-feed/feed-campaigns/feed-campaigns.component';
 import { RoleControlComponent } from './components/role-control/role-control.component';
 import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
-
 
 @NgModule({
   declarations: [
@@ -46,6 +48,9 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
     ActivityComponent,
     TimelineComponent,
     SupportersComponent,
+    ProfileFeedComponent,
+    FeedEventsComponent,
+    FeedCampaignsComponent,
     RoleControlComponent,
     ListRoleComponent,
     ProfileHeaderComponent,
@@ -55,6 +60,10 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    FeedEventsComponent,
+    FeedCampaignsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
