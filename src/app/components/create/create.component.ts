@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserRoleService} from '../../services/user-role/user-role.service';
 
 @Component({
   selector: 'app-create',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userRole: UserRoleService) {
+  }
+
+  userHasOrganizationRole: boolean;
 
   ngOnInit() {
   }

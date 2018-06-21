@@ -1,18 +1,24 @@
-<div class="row" >
-  <div class="col-md-3">
-    <app-creator-info-overview></app-creator-info-overview>
+<!--Here we check if the user has selected some role-->
+<div *ngIf="userHasOrganizationRole;else default_create_page">
+
+  <div class="row">
+    <div class="col-md-3">
+      <app-creator-info-overview></app-creator-info-overview>
+    </div>
+
+    <div class="col-md-9 ">
+      <nav class="nav">
+        <a class="nav-link" [routerLink]="['./event']">Event</a>
+        <a class="nav-link" [routerLink]="['./campaign']">Campaign</a>
+        <a class="nav-link" [routerLink]="['./sponsorship']">Start a sponsorship</a>
+
+      </nav>
+
+    </div>
   </div>
 
-  <div class="col-md-9 ">
-    <nav class="nav">
-      <a class="nav-link" [routerLink]="['./event']">Event</a>
-      <a class="nav-link" [routerLink]="['./campaign']">Campaign</a>
-      <a class="nav-link" [routerLink]="['./sponsorship']">Start a sponsorship</a>
-
-    </nav>
-
-  </div>
 </div>
+
 
 <div class="row justify-content-center ">
   <div class="col-md-11 ">
@@ -21,3 +27,19 @@
 
   </div>
 </div>
+
+
+<!--This is the the component that is shown when user is not in role-->
+<ng-template #default_create_page>
+  <div class="row">
+    <div class="col-md-5">
+      <h1> Choose your organization from the top navigation bar or create a new organization if you don't have any</h1>
+
+      <a class="nav-link" [routerLink]="['./organization']">Event</a>
+
+    </div>
+
+  </div>
+
+
+</ng-template>

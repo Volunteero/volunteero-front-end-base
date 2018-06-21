@@ -4,7 +4,7 @@ export interface ResponseRole {
   roleName: string;
   arn: string;
   /**
-   *  permissions set for the role in format: 
+   *  permissions set for the role in format:
    */
   permissions: string[];
 
@@ -18,6 +18,7 @@ export interface Role {
   // location: string;
   // imageUrl: string;
   accessToken?: string;
+  // add attribute
 
   setAccessToken(tokenString: string): void;
 }
