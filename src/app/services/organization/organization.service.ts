@@ -11,15 +11,15 @@ import {User} from '../../models/User';
   providedIn: 'root'
 })
 export class OrganizationService {
-  private baseUrl = 'http://localhost:1337/organizations';
 
   constructor(private http: HttpClient, private userRoleService: UserRoleService) {
   }
 
+  private baseUrl = 'http://localhost:1337/organizations';
+
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      observe: 'response'
+      'Content-Type': 'application/json'
     }),
     params: null
   };

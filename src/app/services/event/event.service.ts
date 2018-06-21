@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {Event} from '../../models/Event';
 import {of} from 'rxjs/internal/observable/of';
+import {catchError} from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +12,15 @@ const httpOptions = {
 
 export class EventService {
 
-  private eventsUrl = '';
+  private baseUrl = 'https://volunteero-events.herokuapp.com/events';
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    params: null
+  };
+
 
   constructor(private http: HttpClient) {
   }
@@ -23,7 +29,20 @@ export class EventService {
     return of(eventsStub);
   }
 
-  createEvent(event: Event) {
+  createEvent(event: any): Observable<any> {
+
+    // Retrieve the access token
+    const accessToken = '';
+    // Update the event information with the organization id, which is retrieved from idk where
+    event.organization_id = '';
+
+    // Set the access token to the request, take it from idk where
+    // Add the token in the url query params
+    this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
+
+    return this.http.post(this.baseUrl, event, this.httpOptions).pipe(catchError(err => {
+      return of(err);
+    }));
 
   }
 
