@@ -23,3 +23,9 @@ export class SimpleUrlAggregator implements RouteAggregator {
     return str.replace(/\:$/, '');
   }
 }
+
+export class RouteAggregatorFactory {
+  static createSimpleUrlAggregator(baseUrl: string): SimpleUrlAggregator {
+    return new SimpleUrlAggregator(baseUrl);
+  }
+}

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Role, RoleFactory, ResponseRole } from '../../models/Role';
 import { User } from '../../models/User';
-import { RouteAggregator, SimpleUrlAggregator } from '../../lib/RouteAggregator';
+import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregator';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,7 +27,8 @@ export class UserRoleService {
 
   constructor(private http: HttpClient) {
     this.refresh();
-    this.authRouteAggregator = new SimpleUrlAggregator('https://volunteero-auth.herokuapp.com/auth/');
+    this.authRouteAggregator = RouteAggregatorFactory
+      .createSimpleUrlAggregator('https://volunteero-auth.herokuapp.com/auth/');
     this.authRouteAggregator.registerResource('roles', 'roles');
     this.authRouteAggregator.registerResource('assumeRole', 'assumeOrganisationRole');
   }
@@ -37,7 +38,7 @@ export class UserRoleService {
   }
 
 
-  get activeAccessToken(): String { 
+  get activeAccessToken(): String {
     const roleToken = this.selectedRoleSource.getValue().accessToken;
     const userToken = this.userSource.getValue().accessToken;
     return roleToken || userToken;
@@ -86,6 +87,11 @@ export class UserRoleService {
       });
     }
   }
+
+  private _roleOrganizationLinks(roles: Role[]) {
+
+  }
+
 
   private _assumeRole(role: Role): Promise<string> {
     const user = this.userSource.getValue();
