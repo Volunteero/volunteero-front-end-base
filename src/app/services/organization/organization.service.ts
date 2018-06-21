@@ -19,6 +19,7 @@ export class OrganizationService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      observe: 'response'
     }),
     params: null
   };
@@ -35,10 +36,10 @@ export class OrganizationService {
     // Update the request information with user id
     organization.user_id = retrievedUser.id;
 
-    // Add the token in the url
+    // Add the token in the url query params
     this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
 
-    // Send the request
+
     return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(catchError(err => {
       return of(err);
     }));
