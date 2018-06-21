@@ -13,13 +13,17 @@ import {SupportersComponent} from '../components/activity/supporters/supporters.
 import {CreateOrganizationComponent} from '../components/create/create-organization/create-organization.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home/events', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
+    path: 'home', component: HomeComponent
+
+ /*
     path: 'home', component: HomeComponent, children: [
       {path: '', redirectTo: 'events', pathMatch: 'full'},
       {path: 'events', component: EventsComponent},
       {path: 'campaigns', component: CampaignsComponent}
     ]
+ */
   },
   {path: 'discover', component: DiscoverComponent},
   {
