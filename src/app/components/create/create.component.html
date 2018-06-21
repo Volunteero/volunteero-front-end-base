@@ -1,9 +1,23 @@
-<div class="row">
-  <div class="col-md-5">
-    <p>Welcome to our creating view:</p>
-
+<div class="row" >
+  <div class="col-md-3">
+    <app-creator-info-overview></app-creator-info-overview>
   </div>
 
+  <div class="col-md-9 ">
+    <nav class="nav">
+      <a class="nav-link" [routerLink]="['./event']">Event</a>
+      <a class="nav-link" [routerLink]="['./campaign']">Campaign</a>
+      <a class="nav-link" [routerLink]="['./sponsorship']">Start a sponsorship</a>
+
+    </nav>
+
+  </div>
 </div>
 
-<app-create-organization></app-create-organization>
+<div class="row justify-content-center ">
+  <div class="col-md-11 ">
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

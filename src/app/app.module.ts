@@ -28,6 +28,12 @@ import { RoleControlComponent } from './components/role-control/role-control.com
 import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
+import {FormsModule} from '@angular/forms';
+import { CreatorInfoOverviewComponent } from './components/create/creator-info-overview/creator-info-overview.component';
+import { CreateEventComponent } from './components/create/create-event/create-event.component';
+import { CreateCampaignComponent } from './components/create/create-campaign/create-campaign.component';
+import { CreateSponsorshipComponent } from './components/create/create-sponsorship/create-sponsorship.component';
+
 
 @NgModule({
   declarations: [
@@ -51,15 +57,22 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
     ProfileFeedComponent,
     FeedEventsComponent,
     FeedCampaignsComponent,
+    CreateOrganizationComponent,
+    CreatorInfoOverviewComponent,
+    CreateEventComponent,
+    CreateCampaignComponent,
+    CreateSponsorshipComponent,
     RoleControlComponent,
     ListRoleComponent,
     ProfileHeaderComponent,
     CreateOrganizationComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   entryComponents: [
     FeedEventsComponent,
