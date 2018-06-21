@@ -23,6 +23,11 @@ export class EventService {
     return of(eventsStub);
   }
 
+  createEvent(event: Event) {
+
+  }
+
+
   getEventById(id: string): Observable<Event> {
     return of({
       id: '1232312312312',

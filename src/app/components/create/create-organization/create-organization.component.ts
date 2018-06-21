@@ -14,6 +14,7 @@ export class CreateOrganizationComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   createOrganization(name: String, description: String) {
