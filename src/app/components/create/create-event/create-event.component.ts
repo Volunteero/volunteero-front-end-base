@@ -16,7 +16,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   createEvent(name: string, description: string, start: string, end: string, location: string,
-              volunteers: string, category: string, points: number) {
+              volunteers: string, category: string, points: string) {
 
     const event = {
       'name': name,
@@ -25,7 +25,8 @@ export class CreateEventComponent implements OnInit {
       'end': end,
       'location': location,
       'volunteers': volunteers,
-      'category': category
+      'category': category,
+      'points': points
     };
 
     this.eventService.createEvent(event).subscribe((result) => {
@@ -36,7 +37,7 @@ export class CreateEventComponent implements OnInit {
       if (event_id) {
         // TODO snotify that you've been redirected
 
-        this.router.navigate(['/profile/'.concat(event_id)]);
+        this.router.navigate(['/events/'.concat(event_id)]);
       } else {
 
         console.log('THE ERROR when creating and event');
