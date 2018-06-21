@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
@@ -59,13 +59,17 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SnotifyModule
   ],
   entryComponents: [
     FeedEventsComponent,
     FeedCampaignsComponent
   ],
-  providers: [],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
