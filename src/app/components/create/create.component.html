@@ -1,6 +1,7 @@
 <!--Here we check if the user has selected some role-->
-<div *ngIf="userHasOrganizationRole;else default_create_page">
 
+<div *ngIf="userHasOrganizationRole;else default_create_page">
+  <!--{{userRole.selectedRole$.userHasOrganizationRole}}-->
   <div class="row">
     <div class="col-md-3">
       <app-creator-info-overview></app-creator-info-overview>
@@ -31,11 +32,12 @@
 
 <!--This is the the component that is shown when user is not in role-->
 <ng-template #default_create_page>
+
   <div class="row">
     <div class="col-md-5">
       <h1> Choose your organization from the top navigation bar or create a new organization if you don't have any</h1>
 
-      <a class="nav-link" [routerLink]="['./organization']">Event</a>
+      <a class="nav-link" [routerLink]="['./organization']">Create organization from here</a>
 
     </div>
 

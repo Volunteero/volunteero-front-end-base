@@ -8,12 +8,15 @@ import {UserRoleService} from '../../services/user-role/user-role.service';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private userRole: UserRoleService) {
+  constructor(public userRole: UserRoleService) {
   }
 
   userHasOrganizationRole: boolean;
 
   ngOnInit() {
+    this.userRole.selectedRole$.subscribe((result) => {
+      this.userHasOrganizationRole = result.userHasOrganizationRole;
+    });
   }
 
 }
