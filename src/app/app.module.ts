@@ -28,6 +28,7 @@ import { RoleControlComponent } from './components/role-control/role-control.com
 import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { CreateOrganizationComponent } from './components/create/create-organiza
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   entryComponents: [
     FeedEventsComponent,

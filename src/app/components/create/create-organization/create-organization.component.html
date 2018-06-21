@@ -7,16 +7,18 @@
 <div class="row">
   <div class="col-md-5">
 
-    <form>
+
+    <form (ngSubmit)="createOrganization(name.value, description.value)">
       <div class="form-group">
-        <label for="formGroupExampleInput">Name</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" >
+        <label for="exampleFormControlInput1">Name:</label>
+        <input class="form-control" id="exampleFormControlInput1" #name>
       </div>
+
       <div class="form-group">
-        <label for="formGroupExampleInput2">Description</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" >
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #description></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-primary mb-2">Create organization</button>
     </form>
   </div>
 </div>
