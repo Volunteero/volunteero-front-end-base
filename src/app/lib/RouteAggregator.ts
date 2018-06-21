@@ -1,6 +1,22 @@
 export interface RouteAggregator {
+  /**
+   * Sets the base (works as a prefix) of all the aggregated resources
+   * @param route 
+   */
   setBaseRoute(route: string): void;
+  
+  /**
+   * Registers the resource route suffix under a specific name
+   * @param name 
+   * @param resourceRoute 
+   */
   registerResource(name: string, resourceRoute: string): void;
+
+  /**
+   * Returns an aggregated full route of the resource specified by the name
+   * the response is a string of a form `<baseUrl><resource>`
+   * @param name 
+   */
   getResourceRoute(name: string): string | null;
 }
 

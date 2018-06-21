@@ -5,6 +5,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Role, RoleFactory, ResponseRole } from '../../models/Role';
 import { User } from '../../models/User';
 import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregator';
+import { Organization } from '../../models/Organization';
+import { OrganizationService } from '../organization/organization.service';
+import { OrganizationHelper } from '../../lib/OrganizationHelper';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +19,7 @@ const httpOptions = {
 
 export class UserRoleService {
   private authRouteAggregator: RouteAggregator;
+  private organizationHelper: OrganizationHelper;
 
   private userSource: BehaviorSubject<User> = new BehaviorSubject<User>(userStub);
   private selectedRoleSource: BehaviorSubject<Role> = new BehaviorSubject<Role>(roleStub);
@@ -27,6 +31,7 @@ export class UserRoleService {
 
   constructor(private http: HttpClient) {
     this.refresh();
+    this.organizationHelper = new OrganizationHelper(http);
     this.authRouteAggregator = RouteAggregatorFactory
       .createSimpleUrlAggregator('https://volunteero-auth.herokuapp.com/auth/');
     this.authRouteAggregator.registerResource('roles', 'roles');
@@ -84,14 +89,52 @@ export class UserRoleService {
         roles = roles.concat(responseRoles);
 
         this.knownRolesSource.next(roles);
+        // Send the attempt to rename roles
+
+        // TODO: check how can you edit roles so that they would include the existing organization id's
+        this._populateRoleOrganizationNames(roles)
+          .then((renamedRoles) => {
+            this.knownRolesSource.next(renamedRoles);
+          });
       });
     }
   }
 
-  private _roleOrganizationLinks(roles: Role[]) {
-
+  private _populateRoleOrganizationNames(roles: Role[]): Promise<Role[]> {
+    const fakeRoles = roles.filter((role) => !role.isReal);
+    const namedRolesJobs: Promise<Role>[] = roles
+      .filter((role) => {
+        // only retrieve the info for the real roles
+        return role.isReal;
+      }).map((role) => {
+        return this._getOrganizationName(role.entityId)
+          .then((name) => {
+            role.title = name;
+            return role;
+          });
+      });
+    return Promise.all(namedRolesJobs).then((namedRoles) => {
+      console.log('Getting names worked')
+      console.log(namedRoles);
+      const result = fakeRoles.concat(namedRoles);
+      return result;
+    }).catch((error) => {
+      console.error(error);
+      // Fallback to unmodifed roles...
+      return roles;
+    })
   }
 
+  private _getOrganizationName(orgId: string): Promise<String> {
+    return this.organizationHelper
+      .getOrganizationInfo(orgId)
+      .then((org) => {
+        return org.organization_name;
+      }).catch((error) => {
+        console.error(error);
+        return 'incognito';
+      })
+  }
 
   private _assumeRole(role: Role): Promise<string> {
     const user = this.userSource.getValue();
