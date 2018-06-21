@@ -1,7 +1,7 @@
 <!--Here we check if the user has selected some role-->
 
-<div *ngIf="userHasOrganizationRole;else default_create_page">
-  <!--{{userRole.selectedRole$.userHasOrganizationRole}}-->
+<div *ngIf="userRole.userHasOrganizationRole;else default_create_page">
+  {{userRole.userHasOrganizationRole}}
   <div class="row">
     <div class="col-md-3">
       <app-creator-info-overview></app-creator-info-overview>
@@ -17,16 +17,15 @@
 
     </div>
   </div>
+  <div class="row justify-content-center ">
+    <div class="col-md-11 ">
 
-</div>
+      <router-outlet></router-outlet>
 
-
-<div class="row justify-content-center ">
-  <div class="col-md-11 ">
-
-    <router-outlet></router-outlet>
-
+    </div>
   </div>
+
+
 </div>
 
 

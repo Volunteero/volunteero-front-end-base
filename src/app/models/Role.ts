@@ -36,9 +36,6 @@ export class SimpleRole implements Role {
   constructor(public entityId: string, public title: string) {
   }
 
-  setUserHasOrganizationRole(value: boolean) {
-    this.userHasOrganizationRole = value;
-  }
 
   setAccessToken(tokenString: string) {
     this.accessToken = tokenString;
@@ -55,6 +52,10 @@ export class LeveledRole implements Role {
   constructor(public entityId: string, public title: string, public level: string) {
   }
 
+  setUserHasOrganizationRole(value: boolean) {
+    this.userHasOrganizationRole = value;
+  }
+
   setAccessToken(tokenString: string) {
     this.accessToken = tokenString;
   }
@@ -65,8 +66,7 @@ export class RoleFactory {
   static createSimpleRole(roleId: string, roleTitle: string, tokenString: string = ''): Role {
     let role = new SimpleRole(roleId, roleTitle);
     role.setAccessToken(tokenString);
-    // Dijitar
-    role.setUserHasOrganizationRole(true);
+
     return role;
   }
 
@@ -80,6 +80,10 @@ export class RoleFactory {
   }
 
   static createLeveledRole(role: ResponseRole): Role {
-    return new LeveledRole(role.entityIdentifier, role.entityType, role.roleName);
+
+    let newRole = new LeveledRole(role.entityIdentifier, role.entityType, role.roleName);
+    newRole.setUserHasOrganizationRole(true);
+
+    return newRole;
   }
 }

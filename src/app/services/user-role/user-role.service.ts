@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Role, RoleFactory, ResponseRole } from '../../models/Role';
-import { User } from '../../models/User';
-import { RouteAggregator, SimpleUrlAggregator } from '../../lib/RouteAggregator';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs/internal/Observable';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {Role, RoleFactory, ResponseRole} from '../../models/Role';
+import {User} from '../../models/User';
+import {RouteAggregator, SimpleUrlAggregator} from '../../lib/RouteAggregator';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable({
@@ -37,17 +37,21 @@ export class UserRoleService {
   }
 
 
-  get activeAccessToken(): String { 
+  get activeAccessToken(): String {
     const roleToken = this.selectedRoleSource.getValue().accessToken;
     const userToken = this.userSource.getValue().accessToken;
     return roleToken || userToken;
   }
 
+  get userHasOrganizationRole(): boolean {
+
+    return this.selectedRoleSource.getValue().userHasOrganizationRole;
+  }
 
   setUser(user: User) {
     console.log('RoleService: setting user');
     this.userSource.next(user);
-    console.log(this.user$)
+    console.log(this.user$);
     this.refresh();
   }
 
@@ -55,30 +59,30 @@ export class UserRoleService {
     console.log('RoleService: setting role');
     console.warn('RoleService: need assume role call implemented - a BE impediment');
     this._assumeRole(role).then((tokenString) => {
-      console.log('Got the role token')
+      console.log('Got the role token');
       // console.log(tokenString);
-      role.setAccessToken(tokenString)
+      role.setAccessToken(tokenString);
       console.log(role);
       this.selectedRoleSource.next(role);
     }).catch((error) => {
       console.error(error);
-    })
+    });
   }
 
   getUserRoles() {
     const user = this.userSource.getValue();
-    console.log('RC: getting uyser roles')
-    console.log(user)
+    console.log('RC: getting uyser roles');
+    console.log(user);
     if (user && user.accessToken) {
       const url = this.authRouteAggregator.getResourceRoute('roles');
       let params = new HttpParams().set('accessToken', user.accessToken);
-      this.http.get(url, { params: params }).subscribe((data: { roles: ResponseRole[] }) => {
+      this.http.get(url, {params: params}).subscribe((data: { roles: ResponseRole[] }) => {
         console.log('URS: got roles response!');
         console.log(data);
         const responseRoles = UserRoleService._parseRolesFromApiData(data.roles);
         console.log(responseRoles);
 
-        // FIXME: should be removed when a proper BE solution is implemented 
+        // FIXME: should be removed when a proper BE solution is implemented
         let roles = [UserRoleService._getGenericVolunteeroRole()];
         roles = roles.concat(responseRoles);
 
@@ -92,8 +96,8 @@ export class UserRoleService {
 
     if (role.entityId === RoleFactory.createGenericVolunteeroRole().entityId) {
       return new Promise((_res) => {
-        _res("");
-      })
+        _res('');
+      });
     }
 
     const url = this.authRouteAggregator.getResourceRoute('assumeRole');
@@ -103,7 +107,7 @@ export class UserRoleService {
 
 
     return new Promise((_res, _rej) => {
-      this.http.get(url, { params: params })
+      this.http.get(url, {params: params})
         .subscribe((data: any) => {
           console.log('URS: got assume token response response!');
           console.log(data);
@@ -113,10 +117,10 @@ export class UserRoleService {
 
             return _res(data.accessToken);
           } else {
-            return _rej(new Error('got invalid token response'))
+            return _rej(new Error('got invalid token response'));
           }
         });
-    })
+    });
 
   }
 
@@ -128,7 +132,7 @@ export class UserRoleService {
       const roleId = `${index}_${role.roleName}`;
       console.warn('URS: access token is not retrievable!');
       return RoleFactory.createLeveledRole(role);
-    })
+    });
   }
 
 
@@ -151,7 +155,7 @@ const userStub = {
   country: '',
   bio: '',
   accessToken: ''
-}
+};
 
 const roleStub = RoleFactory.createGenericVolunteeroRole();
 
