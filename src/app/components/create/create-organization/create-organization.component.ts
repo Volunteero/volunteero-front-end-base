@@ -30,7 +30,7 @@ export class CreateOrganizationComponent implements OnInit {
       if (organization_id) {
         // TODO snotify that you've been redirected
 
-        this.router.navigate(['/profile/' + organization_id]);
+        this.router.navigate(['/organizations/' + organization_id]);
       } else {
 
         console.log('THE ERROR when creating and organization');
