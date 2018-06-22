@@ -40,7 +40,6 @@ export class OrganizationService {
     this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
     // refresh method from roles
 
-    // entititID = organization_id
 
     return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(catchError(err => {
       return of(err);
