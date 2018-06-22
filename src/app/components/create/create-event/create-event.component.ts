@@ -39,19 +39,18 @@ export class CreateEventComponent implements OnInit {
       // Retrieve the id
       const event_id = result.event_id;
 
-      // if (event_id) {
-      //   // TODO snotify that you've been redirected
-      //
-      //   this.router.navigate(['/events/'.concat(event_id)]);
-      // } else {
-      //
-      //   console.log('THE ERROR when creating and event');
-      //   // TODO use snotify here
-      //   alert('SOme error occured while creating the event');
-      // }
+      if (event_id) {
+        // TODO snotify that you've been redirected
+
+        this.router.navigate(['/events/'.concat(event_id)]);
+      } else {
+
+        console.log('THE ERROR when creating and event');
+        // TODO use snotify here
+        alert('SOme error occured while creating the event');
+      }
 
     });
-
 
   }
 
