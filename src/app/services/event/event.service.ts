@@ -42,13 +42,10 @@ export class EventService {
       const accessToken = this.userRoleService.activeAccessToken;
 
       // Add the token in the url query params
-      this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
+      this.httpOptions.params = new HttpParams().set('token', accessToken);
 
 
     });
-    console.log('WHAT IS BEING SEND');
-    console.log(event);
-
 
     return this.http.post(this.baseUrl, event, this.httpOptions)
       .pipe(catchError(err => {
