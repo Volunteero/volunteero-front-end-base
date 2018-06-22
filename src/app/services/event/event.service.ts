@@ -44,11 +44,11 @@ export class EventService {
       // Add the token in the url query params
       this.httpOptions.params = new HttpParams().set('token', accessToken);
 
-
     });
 
     return this.http.post(this.baseUrl, event, this.httpOptions)
       .pipe(catchError(err => {
+        console.log(err);
         return of(err);
       }));
   }

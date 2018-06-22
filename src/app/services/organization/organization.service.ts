@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Organization} from '../../models/Organization';
 import {Observable} from 'rxjs/internal/Observable';
-import {catchError} from 'rxjs/operators';
+import {catchError, map, tap, mergeMap} from 'rxjs/operators';
 import {of} from 'rxjs/internal/observable/of';
 import {UserRoleService} from '../user-role/user-role.service';
 import {User} from '../../models/User';
@@ -38,12 +38,16 @@ export class OrganizationService {
 
     // Add the token in the url query params
     this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
-    // refresh method from roles
 
 
-    return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(catchError(err => {
-      return of(err);
-    }));
+    return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(
+      tap(() => {
+        this.userRoleService.refresh(); // This with the refreshing is still not working
+      }),
+      catchError(err => {
+        return of(err);
+      }));
+
   }
 
   getOrganizationById(id: string): Observable<Organization> {
