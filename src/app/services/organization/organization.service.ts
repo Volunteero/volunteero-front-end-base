@@ -15,7 +15,7 @@ export class OrganizationService {
   constructor(private http: HttpClient, private userRoleService: UserRoleService) {
   }
 
-  private baseUrl = 'http://localhost:1337/organizations';
+  private baseUrl = 'http://localhost:1337/organizations/';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -45,4 +45,14 @@ export class OrganizationService {
       return of(err);
     }));
   }
+
+  getOrganizationById(id: string): Observable<Organization> {
+
+    return this.http.get(this.baseUrl + id, this.httpOptions).pipe(catchError(err => {
+      return of(err);
+    }));
+
+  }
+
+ 
 }

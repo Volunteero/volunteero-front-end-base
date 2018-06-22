@@ -5,6 +5,8 @@ import {Event} from '../../models/Event';
 import {of} from 'rxjs/internal/observable/of';
 import {catchError} from 'rxjs/operators';
 import {UserRoleService} from '../user-role/user-role.service';
+import {OrganizationService} from '../organization/organization.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class EventService {
   };
 
 
-  constructor(private http: HttpClient, private userRoleService: UserRoleService) {
+  constructor(private http: HttpClient, private userRoleService: UserRoleService, private organizationService: OrganizationService) {
   }
 
   getEvents(): Observable<Event[]> {
@@ -48,9 +50,10 @@ export class EventService {
     console.log(event);
 
 
-    return this.http.post(this.baseUrl, event, this.httpOptions).pipe(catchError(err => {
-      return of(err);
-    }));
+    return this.http.post(this.baseUrl, event, this.httpOptions)
+      .pipe(catchError(err => {
+        return of(err);
+      }));
   }
 
 
