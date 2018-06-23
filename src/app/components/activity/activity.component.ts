@@ -46,7 +46,7 @@ export class ActivityComponent implements OnInit {
 
   private getCampaigns(id: string) {
 
-    this.campaignService.getCampaignById(id)
+    this.campaignService.getCampaignByIdMock(id)
       .subscribe(campaign => this.campaign = campaign);
   }
 }

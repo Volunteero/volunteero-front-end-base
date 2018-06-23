@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -33,6 +31,7 @@ import { CreatorInfoOverviewComponent } from './components/create/creator-info-o
 import { CreateEventComponent } from './components/create/create-event/create-event.component';
 import { CreateCampaignComponent } from './components/create/create-campaign/create-campaign.component';
 import { CreateSponsorshipComponent } from './components/create/create-sponsorship/create-sponsorship.component';
+import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
 import { PointsComponentComponent } from './components/profile-header/points-component/points-component.component';
 import { FeedOrganizationsComponent } from './components/profile-feed/feed-organizations/feed-organizations.component';
 
@@ -68,8 +67,13 @@ import { FeedOrganizationsComponent } from './components/profile-feed/feed-organ
     ListRoleComponent,
     ProfileHeaderComponent,
     CreateOrganizationComponent,
+<<<<<<< HEAD
     PointsComponentComponent,
     FeedOrganizationsComponent
+=======
+    OrganizationDetailsComponent
+
+>>>>>>> develop
   ],
   imports: [
     BrowserModule,
@@ -86,4 +90,5 @@ import { FeedOrganizationsComponent } from './components/profile-feed/feed-organ
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

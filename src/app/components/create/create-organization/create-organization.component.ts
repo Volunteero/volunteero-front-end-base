@@ -23,14 +23,14 @@ export class CreateOrganizationComponent implements OnInit {
     const organization = {'organization_name': name, 'organization_description': description};
 
 
-    this.organizationService.createOrganization(organization).subscribe(result => {
+    this.organizationService.createOrganization(organization).then(result => {
 
       const organization_id = result.organization_id;
 
       if (organization_id) {
         // TODO snotify that you've been redirected
 
-        this.router.navigate(['/profile/'.concat(organization_id)]);
+        this.router.navigate(['/organizations/' + organization_id]);
       } else {
 
         console.log('THE ERROR when creating and organization');

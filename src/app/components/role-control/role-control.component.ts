@@ -58,7 +58,7 @@ export class RoleControlComponent implements OnInit {
     return routeBase;
   }
 
-  get accessToken() : String{ 
+  get accessToken() : String{
     return this.userRoleService.activeAccessToken;
   }
 
@@ -72,6 +72,6 @@ export class RoleControlComponent implements OnInit {
 
   selectRole(role: Role): void {
     console.log(role);
-    this.userRoleService.setCurrentRole(role)
+    this.userRoleService.setCurrentRole(role);
   }
 }
