@@ -25,9 +25,10 @@
         <p>{{organization.organization_description}}</p>
       </div>
       <div class="col-md-3">
-        <a href="#" class="btn btn-success btn-block">View Organization details</a>
-        <a href="#" class="btn btn-success btn-block">View Events</a>
-        <a href="#" class="btn btn-success btn-block">View Campaigns</a>
+        <!-- TODO wire to correct place -->
+        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Organization details</a>
+        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Events</a>
+        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Campaigns</a>
       </div>
     </div>
   </div>
