@@ -9,10 +9,9 @@ import { HeaderEntity } from '../../models/HeaderEntity';
 export class ProfileHeaderComponent implements OnInit {
 
   private _entity: HeaderEntity = {
-    displayName: '',
-    location: '',
-    points: 0,
-    contactName: '',
+    title: '',
+    subtitle: '',
+    extras: []
   };
 
   @Input()
@@ -20,20 +19,16 @@ export class ProfileHeaderComponent implements OnInit {
     this._entity = entity;
   }
 
-  get displayName() {
-    return this._entity.displayName || this._entity.contactName;
+  get title() {
+    return this._entity.title || this._entity.subtitle;
   }
 
-  get contactName() {
-    return this._entity.contactName;
+  get subtitle() {
+    return this._entity.subtitle;
   }
 
-  get location() {
-    return this._entity.location;
-  }
-
-  get points() {
-    return this._entity.points;
+  get extras() {
+    return this._entity.extras;
   }
 
 

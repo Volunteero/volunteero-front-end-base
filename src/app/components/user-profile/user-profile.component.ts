@@ -27,8 +27,8 @@ export class UserProfileComponent implements OnInit {
     const contactName = user.username;
     // TODO: align what to do with points
     const points = 0;
-    return HeaderEntityFactory.buildBasicHeaderEntity(
-      displayName, location, points, contactName
+    return HeaderEntityFactory.createBasicHeaderEntity(
+      displayName, contactName, [location]
     )
   }
 
