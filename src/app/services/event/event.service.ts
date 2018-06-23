@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {Event} from '../../models/Event';
 import {of} from 'rxjs/internal/observable/of';
+import {catchError} from 'rxjs/operators';
+import {UserRoleService} from '../user-role/user-role.service';
+import {OrganizationService} from '../organization/organization.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,44 @@ const httpOptions = {
 
 export class EventService {
 
-  private eventsUrl = '';
+  private baseUrl = 'https://volunteero-events.herokuapp.com/events';
 
-  constructor(private http: HttpClient) {
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    params: null
+  };
+
+
+  constructor(private http: HttpClient, private userRoleService: UserRoleService, private organizationService: OrganizationService) {
   }
 
   getEvents(): Observable<Event[]> {
     return of(eventsStub);
   }
+
+  createEvent(event: any): Observable<any> {
+
+    this.userRoleService.selectedRole$.subscribe((result) => {
+
+      // Retrieve the organization_id
+      event.organization_id = result.entityId;
+
+      // Retrieve the access token
+      const accessToken = this.userRoleService.activeAccessToken;
+
+      // Add the token in the url query params
+      this.httpOptions.params = new HttpParams().set('token', accessToken.toString());
+
+    });
+
+    return this.http.post(this.baseUrl, event, this.httpOptions)
+      .pipe(catchError(err => {
+        return of(err);
+      }));
+  }
+
 
   getEventById(id: string): Observable<Event> {
     return of({
