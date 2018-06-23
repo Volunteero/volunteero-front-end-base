@@ -33,6 +33,7 @@ import { CreatorInfoOverviewComponent } from './components/create/creator-info-o
 import { CreateEventComponent } from './components/create/create-event/create-event.component';
 import { CreateCampaignComponent } from './components/create/create-campaign/create-campaign.component';
 import { CreateSponsorshipComponent } from './components/create/create-sponsorship/create-sponsorship.component';
+import { PointsComponentComponent } from './components/profile-header/points-component/points-component.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { CreateSponsorshipComponent } from './components/create/create-sponsorsh
     RoleControlComponent,
     ListRoleComponent,
     ProfileHeaderComponent,
-    CreateOrganizationComponent
+    CreateOrganizationComponent,
+    PointsComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { CreateSponsorshipComponent } from './components/create/create-sponsorsh
     FormsModule
   ],
   entryComponents: [
+    PointsComponentComponent,
     FeedEventsComponent,
     FeedCampaignsComponent
   ],

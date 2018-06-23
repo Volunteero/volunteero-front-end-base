@@ -10,10 +10,12 @@ export interface User {
   country: string;
   bio: string;
   accessToken: string;
+  points?: number;
 }
 
 // TODO: create the builder class for the interface instantiation?
 export class TokenBasedUser implements User {
+  points?: number;
   first_name: string;
   last_name: string;
   email: string;

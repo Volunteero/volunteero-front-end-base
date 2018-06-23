@@ -3,6 +3,7 @@ import { HeaderEntity, HeaderEntityFactory } from '../../models/HeaderEntity';
 import { UserInfoService } from '../../services/user-info/user-info.service';
 import { UserRoleService } from '../../services/user-role/user-role.service';
 import { User } from '../../models/User';
+import { PointsComponentComponent } from '../profile-header/points-component/points-component.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,7 +25,7 @@ export class UserProfileComponent implements OnInit {
     const location = (user.city) ? `${user.city}, ${user.country}` : user.country;
     const contactName = user.username;
     return HeaderEntityFactory.createBasicHeaderEntity(
-      displayName, contactName, [location]
+      displayName, contactName, [location], PointsComponentComponent
     )
   }
 

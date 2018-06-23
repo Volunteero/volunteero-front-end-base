@@ -3,6 +3,7 @@ export interface HeaderEntity {
   subtitle: string;
   extras: string[];
   pluginComponent?: any;
+  imageUrl?: string
 }
 
 //TODO: lookup design patterns that could work well here
@@ -12,7 +13,8 @@ export class BasicHeaderEntity implements HeaderEntity {
     readonly title: string,
     readonly subtitle: string,
     readonly extras: string[],
-    readonly pluginComponent?: any
+    readonly pluginComponent?: any,
+    readonly imageUrl?: string
   ) { }
 }
 

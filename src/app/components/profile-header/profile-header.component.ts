@@ -8,15 +8,23 @@ import { HeaderEntity } from '../../models/HeaderEntity';
 })
 export class ProfileHeaderComponent implements OnInit {
 
+  private imageUrlPlaceholder = '../../../assets/images/avatar.png';
+
   private _entity: HeaderEntity = {
     title: '',
     subtitle: '',
-    extras: []
+    extras: [],
   };
+  private _extraComponent: any;
 
   @Input()
   set entity(entity: HeaderEntity) {
     this._entity = entity;
+  }
+
+  @Input()
+  set extraComponent(value) {
+    this._extraComponent = value;
   }
 
   get title() {
@@ -31,6 +39,13 @@ export class ProfileHeaderComponent implements OnInit {
     return this._entity.extras;
   }
 
+  get extraComponent() {
+    return this._entity.pluginComponent;
+  }
+
+  get imageUrl() {
+    return this._entity.imageUrl || this.imageUrlPlaceholder;
+  }
 
   constructor() { }
 
