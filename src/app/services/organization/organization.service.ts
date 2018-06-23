@@ -1,8 +1,9 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Organization } from '../../models/Organization';
 import { Observable } from 'rxjs/internal/Observable';
-import { catchError } from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { UserRoleService } from '../user-role/user-role.service';
 import { User } from '../../models/User';
@@ -13,7 +14,6 @@ import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregat
   providedIn: 'root'
 })
 export class OrganizationService {
-  private baseUrl = 'http://localhost:1337/organizations';
 
   private orgRouteAggregator: RouteAggregator;
 
@@ -26,10 +26,11 @@ export class OrganizationService {
       .registerResource('organizations', 'organizations');
   }
 
+  private baseUrl = 'http://localhost:1337/organizations/';
+
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      observe: 'response'
+      'Content-Type': 'application/json'
     }),
     params: null
   };
@@ -50,8 +51,22 @@ export class OrganizationService {
     this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
 
 
-    return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(catchError(err => {
+    return this.http.post(this.baseUrl, organization, this.httpOptions).pipe(
+      tap(() => {
+        this.userRoleService.refresh(); // This with the refreshing is still not working
+      }),
+      catchError(err => {
+        return of(err);
+      }));
+
+  }
+
+  getOrganizationById(id: string): Observable<Organization> {
+
+    return this.http.get(this.baseUrl + id, this.httpOptions).pipe(catchError(err => {
       return of(err);
     }));
+
   }
+
 }

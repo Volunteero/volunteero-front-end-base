@@ -14,6 +14,7 @@ import {CreateOrganizationComponent} from '../components/create/create-organizat
 import {CreateEventComponent} from '../components/create/create-event/create-event.component';
 import {CreateCampaignComponent} from '../components/create/create-campaign/create-campaign.component';
 import {CreateSponsorshipComponent} from '../components/create/create-sponsorship/create-sponsorship.component';
+import {OrganizationDetailsComponent} from '../components/organization-details/organization-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home/events', pathMatch: 'full'},
@@ -36,6 +37,9 @@ const routes: Routes = [
   {path: 'create/organization', component: CreateOrganizationComponent},
 
   {path: 'profile', component: UserProfileComponent},
+
+  {path: 'organizations/:id', component: OrganizationDetailsComponent},
+  {path: 'campaigns/:id', component: ActivityComponent},
 
   {path: 'events/:id', redirectTo: '/events/:id/timeline', pathMatch: 'full'},
 
