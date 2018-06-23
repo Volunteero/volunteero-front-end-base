@@ -3,16 +3,17 @@ import {of} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {catchError} from 'rxjs/operators';
+import {UserRoleService} from '../user-role/user-role.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userRoleService: UserRoleService) {
   }
 
-  private baseUrl = 'https://volunteero-events.herokuapp.com/events';
+  private baseUrl = 'https://volunteero-campaigns.herokuapp.com/campaigns';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -23,14 +24,18 @@ export class CampaignService {
 
   createCampaign(campaign: any): Observable<any> {
 
-    // Retrieve the access token
-    const accessToken = '';
-    // Update the campaign information with the organization id, which is retrieved from idk where
-    campaign.organization_id = '';
+    this.userRoleService.selectedRole$.subscribe((result) => {
 
-    // Set the access token to the request, take it from idk where
-    // Add the token in the url query params
-    this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
+      // Retrieve the organization_id
+      campaign.organization_id = result.entityId;
+
+      // Retrieve the access token
+      const accessToken = this.userRoleService.activeAccessToken;
+
+      // Add the token in the url query params
+      this.httpOptions.params = new HttpParams().set('token', accessToken);
+
+    });
 
     return this.http.post(this.baseUrl, campaign, this.httpOptions).pipe(catchError(err => {
       return of(err);

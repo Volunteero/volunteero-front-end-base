@@ -48,7 +48,6 @@ export class EventService {
 
     return this.http.post(this.baseUrl, event, this.httpOptions)
       .pipe(catchError(err => {
-        console.log(err);
         return of(err);
       }));
   }
