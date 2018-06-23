@@ -22,7 +22,20 @@ export class EventParticipationComponent implements OnInit {
 
 
   changeParticipationStatus() {
+
     if (this.eventParticipationService.participates) {
+      this.eventService.cancelEventParticipation(this.event_id, this.user_id).subscribe((result) => {
+        console.log('FROM CANCEL PARTICIPATE INTO EVENT');
+        console.log(result);
+
+        if (result.ok) {
+          this.eventParticipationService.participates = true;
+        } else {
+          alert('Some error occured while calling CANCEL participate into event');
+        }
+
+      });
+
       // Cancel user participation
     } else {
 
