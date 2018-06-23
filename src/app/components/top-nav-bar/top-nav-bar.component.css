@@ -8,7 +8,7 @@
 }
 
 .nav-link-pink {
-  color: hotpink;
+  color: #DC3545;
   padding-right: .5rem;
   padding-left: .5rem;
   display: block;
@@ -18,10 +18,14 @@
   box-sizing: border-box;
 }
   .nav-link-pink:hover {
-    color: deeppink;
+    color: #CA2535;
   }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: lightpink;
   opacity: 1; /* Firefox */
+}
+.row {
+  margin-left: auto;
+  margin-right: auto;
 }

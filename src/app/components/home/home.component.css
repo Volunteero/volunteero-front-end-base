@@ -1,6 +1,4 @@
-#tab-bar{
-  margin-bottom: 3%;
-}
+
 .nav-link-pink {
   color: hotpink;
   padding-right: .5rem;
@@ -70,4 +68,8 @@ h1 {
   border-style: outset;
   border-color: #D93343;
   border-radius: 10px;
+}
+.row{
+  margin-left:auto;
+  margin-right:auto;
 }
