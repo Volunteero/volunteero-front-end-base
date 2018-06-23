@@ -21,12 +21,12 @@ export class CreateCampaignComponent implements OnInit {
     this.campaignService.createCampaign(campaign).subscribe((result) => {
 
       // Retrieve the id
-      const campaign_id = result.camapaign_id;
+      const campaign_id = result.campaign_id;
 
       if (campaign_id) {
         // TODO snotify that you've been redirected
 
-        this.router.navigate(['/campaigns/'.concat(campaign_id)]);
+        this.router.navigate(['/campaigns/' + campaign_id]);
       } else {
 
         console.log('THE ERROR when creating a campaign');

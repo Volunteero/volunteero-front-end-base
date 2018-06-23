@@ -13,7 +13,7 @@ export class CampaignService {
   constructor(private http: HttpClient, private userRoleService: UserRoleService) {
   }
 
-  private baseUrl = 'https://volunteero-campaigns.herokuapp.com/campaigns';
+  private baseUrl = 'https://volunteero-campaigns.herokuapp.com/campaigns/';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -33,7 +33,7 @@ export class CampaignService {
       const accessToken = this.userRoleService.activeAccessToken;
 
       // Add the token in the url query params
-      this.httpOptions.params = new HttpParams().set('token', accessToken);
+      this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
 
     });
 
@@ -43,8 +43,14 @@ export class CampaignService {
 
   }
 
-
   getCampaignById(id) {
+    return this.http.get(this.baseUrl + id, this.httpOptions).pipe(catchError(err => {
+      return of(err);
+    }));
+  }
+
+
+  getCampaignByIdMock(id) {
     return of({
       name: 'Campaign 1',
       id: 'asdasdasdasdas',
