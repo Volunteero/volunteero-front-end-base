@@ -68,6 +68,7 @@ import {OrganizationDetailsComponent} from './components/organization-details/or
     ProfileHeaderComponent,
     CreateOrganizationComponent,
     OrganizationDetailsComponent
+
   ],
   imports: [
     BrowserModule,

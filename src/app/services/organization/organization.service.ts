@@ -1,18 +1,29 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Organization} from '../../models/Organization';
-import {Observable} from 'rxjs/internal/Observable';
-import {catchError, map, tap, mergeMap} from 'rxjs/operators';
-import {of} from 'rxjs/internal/observable/of';
-import {UserRoleService} from '../user-role/user-role.service';
-import {User} from '../../models/User';
+
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Organization } from '../../models/Organization';
+import { Observable } from 'rxjs/internal/Observable';
+import {catchError, tap} from 'rxjs/operators';
+import { of } from 'rxjs/internal/observable/of';
+import { UserRoleService } from '../user-role/user-role.service';
+import { User } from '../../models/User';
+import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregator';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
 
-  constructor(private http: HttpClient, private userRoleService: UserRoleService) {
+  private orgRouteAggregator: RouteAggregator;
+
+  constructor(
+    private http: HttpClient,
+    private userRoleService: UserRoleService) {
+    this.orgRouteAggregator = RouteAggregatorFactory
+      .createSimpleUrlAggregator('https://volunteero-organizations.herokuapp.com/');
+    this.orgRouteAggregator
+      .registerResource('organizations', 'organizations');
   }
 
   private baseUrl = 'http://localhost:1337/organizations/';

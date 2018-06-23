@@ -13,16 +13,23 @@ export interface ResponseRole {
 export interface Role {
   entityId?: string;
   // displayName: string;
-  title?: string;
+  // FIXME: really? string or String...
+  title?: string | String;
   level: string;
   // location: string;
   // imageUrl: string;
   accessToken?: string;
+  /**
+   * Corresponds to the property of a role being a placholder or actually valid
+   */
+  isReal: boolean;
 
   // added by Dijitar
   userHasOrganizationRole: boolean;
 
   setAccessToken(tokenString: string): void;
+
+  setIsReal(flag: boolean): void;
 }
 
 export class SimpleRole implements Role {
@@ -33,12 +40,20 @@ export class SimpleRole implements Role {
   accessToken: string;
   public userHasOrganizationRole: boolean;
 
+  isReal: boolean;
+
   constructor(public entityId: string, public title: string) {
+    this.isReal = false;
   }
 
 
   setAccessToken(tokenString: string) {
     this.accessToken = tokenString;
+  }
+
+
+  setIsReal(flag: boolean) {
+    this.isReal = flag;
   }
 
 }
@@ -47,9 +62,14 @@ export class LeveledRole implements Role {
   // location: string;
   // imageUrl: string;
   accessToken: string;
+
   userHasOrganizationRole: boolean;
 
-  constructor(public entityId: string, public title: string, public level: string) {
+  constructor(
+    public entityId: string,
+    public title: string,
+    public level: string,
+    public isReal: boolean = false) {
   }
 
   setUserHasOrganizationRole(value: boolean) {
@@ -59,6 +79,11 @@ export class LeveledRole implements Role {
   setAccessToken(tokenString: string) {
     this.accessToken = tokenString;
   }
+
+  setIsReal(flag: boolean): void {
+    this.isReal = flag;
+  }
+
 
 }
 
@@ -81,9 +106,10 @@ export class RoleFactory {
 
   static createLeveledRole(role: ResponseRole): Role {
 
-    let newRole = new LeveledRole(role.entityIdentifier, role.entityType, role.roleName);
+    const newRole = new LeveledRole(role.entityIdentifier, role.entityType, role.roleName, true);
     newRole.setUserHasOrganizationRole(true);
 
     return newRole;
+
   }
 }

@@ -42,7 +42,7 @@ export class EventService {
       const accessToken = this.userRoleService.activeAccessToken;
 
       // Add the token in the url query params
-      this.httpOptions.params = new HttpParams().set('token', accessToken);
+      this.httpOptions.params = new HttpParams().set('token', accessToken.toString());
 
     });
 

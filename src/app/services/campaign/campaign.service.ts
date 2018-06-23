@@ -33,7 +33,7 @@ export class CampaignService {
       const accessToken = this.userRoleService.activeAccessToken;
 
       // Add the token in the url query params
-      this.httpOptions.params = new HttpParams().set('accessToken', accessToken);
+      this.httpOptions.params = new HttpParams().set('accessToken', accessToken.toString());
 
     });
 
