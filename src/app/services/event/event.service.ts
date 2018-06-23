@@ -53,6 +53,20 @@ export class EventService {
   }
 
 
+  checkEventParticipationStatus(event_id: string, user_id: string) {
+
+    // Add the token in the url query params
+
+    this.httpOptions.params = new HttpParams().set('event_id', event_id).set('user_id', user_id);
+
+    return this.http.get(this.baseUrl, this.httpOptions).pipe(catchError(err => {
+      return of(err);
+    }));
+  }
+
+
+
+
   getEventById(id: string): Observable<Event> {
     return of({
       id: '1232312312312',
