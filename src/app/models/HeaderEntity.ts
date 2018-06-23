@@ -1,7 +1,7 @@
 export interface HeaderEntity {
   title: string;
   subtitle: string;
-  extras: string[] | String[];
+  extras?: string[] | String[];
   pluginComponent?: any;
   imageUrl?: string
 }

@@ -2,6 +2,7 @@ import { UserToken } from "./Token";
 
 export interface User {
   id: string;
+  user_id: string;
   username: string;
   first_name: string;
   last_name: string;
@@ -15,6 +16,7 @@ export interface User {
 
 // TODO: create the builder class for the interface instantiation?
 export class TokenBasedUser implements User {
+  user_id: string;
   points?: number;
   first_name: string;
   last_name: string;
@@ -25,7 +27,9 @@ export class TokenBasedUser implements User {
   constructor(
     public id: string = '',
     public username: string = '',
-    public accessToken: string = '') {
+    public accessToken: string = ''
+  ) {
+    this.user_id = id;
   }
 }
 
@@ -40,6 +44,7 @@ export class UserFactory {
 
 export const USER_STUB = {
   id: '',
+  user_id: '',
   username: '',
   first_name: '',
   last_name: '',

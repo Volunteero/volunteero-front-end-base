@@ -18,8 +18,10 @@ export class FeedOrganizationsComponent implements OnInit {
     this.userInfoService.userInfo$.subscribe(
       userInfo => {
         this._user = userInfo;
-        if (userInfo.id) {
-          this.userInfoService.getUserOrganizationsById(userInfo.id);
+        console.warn(userInfo);
+        if (userInfo.user_id) {
+          console.log(userInfo.user_id);
+          this.userInfoService.getUserOrganizationsById(userInfo.user_id);
         }
       });
     this.userInfoService.userOrganizations$.subscribe(
@@ -28,6 +30,10 @@ export class FeedOrganizationsComponent implements OnInit {
         this._organizations = orgs;
       }
     )
+  }
+
+  get organizations() {
+    return this._organizations;
   }
 
   ngOnInit() {

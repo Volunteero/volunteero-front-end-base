@@ -26,8 +26,8 @@ export class UserProfileComponent implements OnInit {
     }
     const displayName = user.first_name
       ? `${user.first_name} ${user.last_name || ''}` : user.username;
-    const location = (user.city) ? `${user.city}, ${user.country}` : user.country;
     const contactName = user.username;
+    const location = (user.city) ? `${user.city}, ${user.country}` : user.country;
     return HeaderEntityFactory.createBasicHeaderEntity(
       displayName, contactName, [location], PointsComponentComponent
     )

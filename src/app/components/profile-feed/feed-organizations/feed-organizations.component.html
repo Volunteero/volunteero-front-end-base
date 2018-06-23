@@ -1,12 +1,10 @@
 <section id="header" class="">
-    <div class="container">
-      <div class="row" id="feed-header">
-        <div class="col-4">
-          <h6>
-              Memberships:
-          </h6>
-        </div>
+  <div class="container">
+    <div class="row" *ngFor="let org of organizations">
+      <div class="col-4">
+        {{org.organization_name}}
+        <br/> {{org.organization_description}}
       </div>
-      <!-- TODO: place cards here -->
     </div>
-  </section>
+  </div>
+</section>
