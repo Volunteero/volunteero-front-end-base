@@ -23,7 +23,7 @@ export class CreateOrganizationComponent implements OnInit {
     const organization = {'organization_name': name, 'organization_description': description};
 
 
-    this.organizationService.createOrganization(organization).subscribe(result => {
+    this.organizationService.createOrganization(organization).then(result => {
 
       const organization_id = result.organization_id;
 

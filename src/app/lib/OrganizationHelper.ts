@@ -8,7 +8,7 @@ export class OrganizationHelper {
 
   constructor(private http: HttpClient) {
     this.orgRouteAggregator = RouteAggregatorFactory
-      .createSimpleUrlAggregator('https://volunteero-organizations.herokuapp.com/');
+      .createSimpleUrlAggregator('https://volunteero-organizations.herokuapp.com');
     this.orgRouteAggregator
       .registerResource('organizations', 'organizations');
   }
