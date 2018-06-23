@@ -34,6 +34,7 @@ import {CreateEventComponent} from './components/create/create-event/create-even
 import {CreateCampaignComponent} from './components/create/create-campaign/create-campaign.component';
 import {CreateSponsorshipComponent} from './components/create/create-sponsorship/create-sponsorship.component';
 import {OrganizationDetailsComponent} from './components/organization-details/organization-details.component';
+import { EventParticipationComponent } from './components/event-participation/event-participation.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {OrganizationDetailsComponent} from './components/organization-details/or
     ListRoleComponent,
     ProfileHeaderComponent,
     CreateOrganizationComponent,
-    OrganizationDetailsComponent
+    OrganizationDetailsComponent,
+    EventParticipationComponent
 
   ],
   imports: [
