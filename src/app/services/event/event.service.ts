@@ -64,7 +64,14 @@ export class EventService {
     }));
   }
 
+  participateIntoEvent(event_id: string, user_id: string) {
+    // Create the object to be sent
+    const userEventData = {'event': event_id, 'user': user_id};
 
+    return this.http.post(this.baseUrl, userEventData, this.httpOptions).pipe(catchError(err => {
+      return of(err);
+    }));
+  }
 
 
   getEventById(id: string): Observable<Event> {
