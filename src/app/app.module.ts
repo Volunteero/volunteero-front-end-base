@@ -28,12 +28,13 @@ import { RoleControlComponent } from './components/role-control/role-control.com
 import { ListRoleComponent } from './components/role-control/list-role/list-role.component';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 import { CreateOrganizationComponent } from './components/create/create-organization/create-organization.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CreatorInfoOverviewComponent } from './components/create/creator-info-overview/creator-info-overview.component';
 import { CreateEventComponent } from './components/create/create-event/create-event.component';
 import { CreateCampaignComponent } from './components/create/create-campaign/create-campaign.component';
 import { CreateSponsorshipComponent } from './components/create/create-sponsorship/create-sponsorship.component';
 import { PointsComponentComponent } from './components/profile-header/points-component/points-component.component';
+import { FeedOrganizationsComponent } from './components/profile-feed/feed-organizations/feed-organizations.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { PointsComponentComponent } from './components/profile-header/points-com
     ListRoleComponent,
     ProfileHeaderComponent,
     CreateOrganizationComponent,
-    PointsComponentComponent
+    PointsComponentComponent,
+    FeedOrganizationsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { PointsComponentComponent } from './components/profile-header/points-com
   entryComponents: [
     PointsComponentComponent,
     FeedEventsComponent,
-    FeedCampaignsComponent
+    FeedCampaignsComponent,
+    FeedOrganizationsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

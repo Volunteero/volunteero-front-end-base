@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FeedEventsComponent } from './feed-events/feed-events.component';
 import { FeedCampaignsComponent } from './feed-campaigns/feed-campaigns.component';
 import { ActionCapFactory, ComponentSwitchCap, ActionCap } from './lib/ActionCap';
+import { FeedOrganizationsComponent } from './feed-organizations/feed-organizations.component';
 
 @Component({
   selector: 'app-profile-feed',
@@ -24,6 +25,10 @@ export class ProfileFeedComponent implements OnInit {
       ActionCapFactory
         .createComponentSwitchCap(
           'Campaigns', 'campaign-feed-cap', FeedCampaignsComponent
+        ),
+      ActionCapFactory
+        .createComponentSwitchCap(
+          'Organizations', 'organizations-feed-cap', FeedOrganizationsComponent
         )
     ];
   }
