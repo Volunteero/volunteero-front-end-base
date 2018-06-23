@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {OrganizationService} from '../../services/organization/organization.service';
-import {Organization} from '../../models/Organization';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OrganizationService } from '../../services/organization/organization.service';
+import { Organization } from '../../models/Organization';
+import { HeaderEntityFactory } from '../../models/HeaderEntity';
 
 @Component({
   selector: 'app-organization-details',
@@ -14,6 +15,20 @@ export class OrganizationDetailsComponent implements OnInit {
   }
 
   public organization: Organization;
+
+  get headerEntity() {
+    const organization = this.organization;
+    if (typeof organization === 'undefined') {
+      return  HeaderEntityFactory.createBasicHeaderEntity(
+        '', ''
+      );
+    }
+    const title = organization.organization_name || '';
+    const subtitle = organization.organization_description || '';
+    return HeaderEntityFactory.createBasicHeaderEntity(
+      title, subtitle
+    )
+  }
 
   ngOnInit() {
     this.getOrganization();

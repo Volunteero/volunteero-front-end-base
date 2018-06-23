@@ -32,7 +32,9 @@ export class ProfileHeaderComponent implements OnInit {
   }
 
   get subtitle() {
-    return this._entity.subtitle;
+    const treshold = 100;
+    return (this._entity.subtitle.length > treshold)
+      ? `${this._entity.subtitle.substr(0, treshold)}...` : this._entity.subtitle;
   }
 
   get extras() {

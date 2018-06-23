@@ -4,6 +4,7 @@ import { User, USER_STUB } from '../../models/User';
 import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregator';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Organization } from '../../models/Organization';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,13 @@ import { HttpClient } from '@angular/common/http';
 export class UserInfoService {
 
   private _userResourceAggregator: RouteAggregator;
+  private _orgResourceAggregator: RouteAggregator;
+
   private userInfoSource: BehaviorSubject<User> = new BehaviorSubject<User>(USER_STUB);
+  private userOrganizationSource: BehaviorSubject<Organization[]> = new BehaviorSubject([]);
 
   userInfo$: Observable<User> = this.userInfoSource.asObservable();
+  userOrganizations$: Observable<Organization[]> = this.userOrganizationSource.asObservable();
 
   // FIXME: this is a very crappy way of sharing data
   constructor(private http: HttpClient) {
@@ -21,6 +26,12 @@ export class UserInfoService {
       .createMethodBasedUrlAggregator('https://volunteero-altar.herokuapp.com/altar/v1/');
     this._userResourceAggregator
       .registerResource('find', 'users/find', 'put');
+
+
+    this._orgResourceAggregator = RouteAggregatorFactory
+      .createSimpleUrlAggregator('https://volunteero-organizations.herokuapp.com/organizations');
+    this._orgResourceAggregator
+      .registerResource('collect', 'get-organizations-by-user-id/');
   }
 
   /**
@@ -49,6 +60,23 @@ export class UserInfoService {
           _res(true);
         } else {
           _res(false);
+        }
+      });
+    });
+  }
+
+  getUserOrganizationsById(id: string): Promise<Organization[]> {
+    const route = this._orgResourceAggregator.getResourceRoute('collect');
+    // (this.http[method] || this.http.put)()
+    return new Promise((_res, _rej) => {
+      this.http.get(`${route}${id}`).subscribe((orgs: Organization[]) => {
+        if (orgs) {
+          console.log('UI: found a user');
+          console.log(orgs);
+          this.userOrganizationSource.next(orgs);
+          _res();
+        } else {
+          _res([]);
         }
       });
     });

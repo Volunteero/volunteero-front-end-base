@@ -1,7 +1,7 @@
 export interface HeaderEntity {
   title: string;
   subtitle: string;
-  extras: string[];
+  extras: string[] | String[];
   pluginComponent?: any;
   imageUrl?: string
 }
@@ -12,7 +12,7 @@ export class BasicHeaderEntity implements HeaderEntity {
   constructor(
     readonly title: string,
     readonly subtitle: string,
-    readonly extras: string[],
+    readonly extras: string[] | String[],
     readonly pluginComponent?: any,
     readonly imageUrl?: string
   ) { }
@@ -21,11 +21,11 @@ export class BasicHeaderEntity implements HeaderEntity {
 
 export class HeaderEntityFactory {
   static createBasicHeaderEntity(
-    title: string,
-    subtitle: string,
-    extras: string[] = [],
+    title: string | String,
+    subtitle: string | String,
+    extras: string[] | String[] = [],
     pluginComponent?: any
   ): HeaderEntity {
-    return new BasicHeaderEntity(title, subtitle, extras, pluginComponent);
+    return new BasicHeaderEntity(String(title), String(subtitle), extras, pluginComponent);
   }
 }

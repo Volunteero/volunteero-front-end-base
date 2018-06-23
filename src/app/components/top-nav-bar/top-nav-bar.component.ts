@@ -43,12 +43,13 @@ export class TopNavBarComponent implements OnInit {
     return '';
   }
 
-  
-  get profileRouterLink() : String {
+
+  get profileRouterLink(): String {
     const routeBase = '/profile';
-    if(this.role.entityId !== RoleFactory.createGenericVolunteeroRole().entityId){
+    const organizationHost = '/organizations';
+    if (this.role.entityId !== RoleFactory.createGenericVolunteeroRole().entityId) {
       const extra = this.role.entityId;
-      return `${routeBase}/${extra}`;
+      return `${organizationHost}/${extra}`;
     }
     return routeBase;
   }
