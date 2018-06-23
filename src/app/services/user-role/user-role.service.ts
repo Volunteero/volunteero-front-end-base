@@ -191,22 +191,6 @@ export class UserRoleService {
   }
 }
 
-<<<<<<< HEAD
-=======
-
-const userStub = {
-  id: '',
-  username: '',
-  first_name: '',
-  last_name: '',
-  email: '',
-  city: '',
-  country: '',
-  bio: '',
-  accessToken: ''
-};
-
->>>>>>> develop
 const roleStub = RoleFactory.createGenericVolunteeroRole();
 
 const rolesStub = [

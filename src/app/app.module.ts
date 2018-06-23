@@ -67,13 +67,9 @@ import { FeedOrganizationsComponent } from './components/profile-feed/feed-organ
     ListRoleComponent,
     ProfileHeaderComponent,
     CreateOrganizationComponent,
-<<<<<<< HEAD
     PointsComponentComponent,
-    FeedOrganizationsComponent
-=======
+    FeedOrganizationsComponent,
     OrganizationDetailsComponent
-
->>>>>>> develop
   ],
   imports: [
     BrowserModule,
