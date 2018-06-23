@@ -65,6 +65,8 @@ export class EventService {
   }
 
   participateIntoEvent(event_id: string, user_id: string) {
+    this.httpOptions.params = null;
+
     // Create the object to be sent
     const userEventData = {'event': event_id, 'user': user_id};
 
@@ -74,6 +76,7 @@ export class EventService {
   }
 
   cancelEventParticipation(event_id: string, user_id: string) {
+    this.httpOptions.params = null;
     // Create the object to be sent
     const userEventData = {'event': event_id, 'user': user_id};
 

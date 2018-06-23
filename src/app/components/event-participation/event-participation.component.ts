@@ -18,6 +18,7 @@ export class EventParticipationComponent implements OnInit {
   private user_id: string;
 
   ngOnInit() {
+    this.setInitialParticipationStatus();
   }
 
 
@@ -28,8 +29,9 @@ export class EventParticipationComponent implements OnInit {
         console.log('FROM CANCEL PARTICIPATE INTO EVENT');
         console.log(result);
 
-        if (result.ok) {
-          this.eventParticipationService.participates = true;
+        if (result._id) {
+          this.eventParticipationService.participates = false;
+          // TODO Snotify here
         } else {
           alert('Some error occured while calling CANCEL participate into event');
         }
@@ -43,13 +45,14 @@ export class EventParticipationComponent implements OnInit {
         console.log('FROM PARTICIPATE INTO EVENT');
         console.log(result);
 
-        if (result.ok) {
+        if (result._id) {
           this.eventParticipationService.participates = true;
+          // TODO Snotify here
+
         } else {
           alert('Some error occured while calling participate into event');
         }
       });
-      // Make user participate
     }
 
   }
@@ -62,8 +65,8 @@ export class EventParticipationComponent implements OnInit {
       this.eventService.checkEventParticipationStatus(this.event_id, this.user_id).subscribe((result) => {
         console.log('HERE IS THE RESULT OF CHECK PARTICIPATION STATUS');
         console.log(result);
-        // Check if the user participates in the current event
-        // If he does update the boolean service
+
+        this.eventParticipationService.participates = result.enrolled;
       });
     });
 

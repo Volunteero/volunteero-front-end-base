@@ -11,6 +11,7 @@ export class EventComponent implements OnInit {
   constructor() {
   }
 
+  public test_var = '5af8834be636b12364a020eb';
 
   @Input() event: Event;
 
