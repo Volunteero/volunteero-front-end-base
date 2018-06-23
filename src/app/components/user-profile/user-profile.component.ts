@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderEntity, HeaderEntityFactory } from '../../models/HeaderEntity';
+import { UserInfoService } from '../../services/user-info/user-info.service';
+import { UserRoleService } from '../../services/user-role/user-role.service';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,33 +11,47 @@ import { HeaderEntity, HeaderEntityFactory } from '../../models/HeaderEntity';
 })
 export class UserProfileComponent implements OnInit {
 
-  // some mock user stuff
-  private _user = {
-    firstName: 'Alice',
-    lastName: 'Janoski',
-    city: 'Washington',
-    location: 'USA',
-    username: 'ajanoski@yahoo.com',
-  }
+  private _currentUser: User;
+  private _userInfo: User;
 
   get headerEntity(): HeaderEntity | null {
-    const user = this._user;
+    const user = this._userInfo;
     if (typeof user === 'undefined') {
       return null;
     }
-    const displayName = `${user.firstName} ${user.lastName}`;
-    const location = (user.city) ? `${user.city}, ${user.location}` : user.location;
+    const displayName = user.first_name
+      ? `${user.first_name} ${user.last_name || ''}` : user.username;
+    const location = (user.city) ? `${user.city}, ${user.country}` : user.country;
     const contactName = user.username;
-    // TODO: align what to do with points
-    const points = 0;
     return HeaderEntityFactory.createBasicHeaderEntity(
       displayName, contactName, [location]
     )
   }
 
-  constructor() { }
+  constructor(
+    private userInfoService: UserInfoService,
+    private userRoleService: UserRoleService
+  ) {
+    this.userRoleService.user$.subscribe(
+      user => {
+        this._currentUser = user;
+      });
+    this.userInfoService.userInfo$.subscribe(
+      userInfo => {
+        this._userInfo = userInfo;
+      });
+  }
 
   ngOnInit() {
+    // get the user informations
+    this.userInfoService.getUserInformation(this._currentUser.username)
+      .then(isSuccessful => {
+        // Did not manage to retrieve anything 
+        if (!isSuccessful) {
+          console.warn('User information could not be retrieved')
+          this.userInfoService.setUserInformation(this._currentUser);
+        }
+      });
   }
 
 }

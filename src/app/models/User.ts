@@ -31,4 +31,19 @@ export class UserFactory {
   static createUserFromToken(token: UserToken, tokenString: string) {
     return new TokenBasedUser(token.id, token.username, tokenString);
   }
+  static createEmtpyUser() {
+    return USER_STUB;
+  }
+}
+
+export const USER_STUB = {
+  id: '',
+  username: '',
+  first_name: '',
+  last_name: '',
+  email: '',
+  city: '',
+  country: '',
+  bio: '',
+  accessToken: ''
 }

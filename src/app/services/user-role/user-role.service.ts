@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Role, RoleFactory, ResponseRole } from '../../models/Role';
-import { User } from '../../models/User';
+import { User, USER_STUB } from '../../models/User';
 import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregator';
 import { Organization } from '../../models/Organization';
 import { OrganizationService } from '../organization/organization.service';
@@ -21,7 +21,7 @@ export class UserRoleService {
   private authRouteAggregator: RouteAggregator;
   private organizationHelper: OrganizationHelper;
 
-  private userSource: BehaviorSubject<User> = new BehaviorSubject<User>(userStub);
+  private userSource: BehaviorSubject<User> = new BehaviorSubject<User>(USER_STUB);
   private selectedRoleSource: BehaviorSubject<Role> = new BehaviorSubject<Role>(roleStub);
   private knownRolesSource: BehaviorSubject<Role[]> = new BehaviorSubject<Role[]>([roleStub]);
 
@@ -187,19 +187,6 @@ export class UserRoleService {
   static _getGenericVolunteeroRole(): Role {
     return RoleFactory.createGenericVolunteeroRole();
   }
-}
-
-
-const userStub = {
-  id: '',
-  username: '',
-  first_name: '',
-  last_name: '',
-  email: '',
-  city: '',
-  country: '',
-  bio: '',
-  accessToken: ''
 }
 
 const roleStub = RoleFactory.createGenericVolunteeroRole();
