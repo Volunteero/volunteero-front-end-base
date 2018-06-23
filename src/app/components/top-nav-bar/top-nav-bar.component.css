@@ -21,19 +21,6 @@
     color: deeppink;
   }
 
-
-.btn-outline-pink {
-  color: deeppink;
-  background-color: transparent;
-  background-image: none;
-  border-color: deeppink;
-}
-
-  .btn-outline-pink:hover {
-    background-color: deeppink;
-    color:white;
-  }
-
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: lightpink;
   opacity: 1; /* Firefox */

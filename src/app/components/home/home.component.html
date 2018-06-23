@@ -1,9 +1,15 @@
 
-<div class="row justify-content-center " id="tab-bar">
-
-  </div>
-<div class="row justify-content-center ">
-  <div class="col-md-11 ">
-
+<div id="home">
+  <div class="landing-text">
+    <div class="row">
+      <h1 class="col-lg-10 offset-1">Make Volunteering Great Again</h1>
+    </div>
+    <div class="row top-buffer">
+      <a routerLink="/discover" class="btn btn-danger btn-lg col-sm-2 offset-3">Discover</a>
+      <a routerLink="/create" class="btn btn-danger btn-lg col-sm-2 offset-2">Create</a>
+    </div>
+    <div class="row">
+      <canvas id="canvas" class="col-lg-6 offset-lg-3 col-md-10 offset-md-1" >{{chart}}</canvas>
+    </div>
   </div>
 </div>
