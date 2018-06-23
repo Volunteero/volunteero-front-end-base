@@ -13,13 +13,19 @@ export interface ResponseRole {
 export interface Role {
   entityId?: string;
   // displayName: string;
-  title?: string;
+  // FIXME: really? string or String...
+  title?: string | String;
   level: string;
   // location: string;
   // imageUrl: string;
   accessToken?: string;
+  /**
+   * Corresponds to the property of a role being a placholder or actually valid
+   */
+  isReal: boolean;
 
   setAccessToken(tokenString: string): void;
+  setIsReal(flag: boolean): void;
 }
 
 export class SimpleRole implements Role {
@@ -27,10 +33,17 @@ export class SimpleRole implements Role {
   // location: string;
   // imageUrl: string;
   accessToken: string;
-  constructor(public entityId: string, public title: string) { }
+  isReal: boolean;
+  constructor(public entityId: string, public title: string) {
+    this.isReal = false;
+  }
 
   setAccessToken(tokenString: string) {
     this.accessToken = tokenString;
+  }
+
+  setIsReal(flag: boolean) {
+    this.isReal = flag;
   }
 }
 
@@ -38,10 +51,17 @@ export class LeveledRole implements Role {
   // location: string;
   // imageUrl: string;
   accessToken: string;
-  constructor(public entityId: string, public title: string, public level: string) { }
+  constructor(
+    public entityId: string,
+    public title: string,
+    public level: string,
+    public isReal: boolean = false) { }
 
   setAccessToken(tokenString: string) {
     this.accessToken = tokenString;
+  }
+  setIsReal(flag: boolean): void {
+    this.isReal = flag;
   }
 }
 
@@ -61,6 +81,6 @@ export class RoleFactory {
   }
 
   static createLeveledRole(role: ResponseRole): Role {
-    return new LeveledRole(role.entityIdentifier, role.entityType, role.roleName)
+    return new LeveledRole(role.entityIdentifier, role.entityType, role.roleName, true);
   }
 }

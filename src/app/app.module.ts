@@ -66,7 +66,6 @@ import { CreateSponsorshipComponent } from './components/create/create-sponsorsh
     ListRoleComponent,
     ProfileHeaderComponent,
     CreateOrganizationComponent
-
   ],
   imports: [
     BrowserModule,
