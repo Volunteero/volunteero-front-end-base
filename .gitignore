@@ -43,3 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 .directory
+.vs/slnx.sqlite
+.vs/slnx.sqlite-journal
