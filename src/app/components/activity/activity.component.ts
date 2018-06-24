@@ -13,11 +13,11 @@ import {Campaign} from '../../models/Campaign';
 })
 export class ActivityComponent implements OnInit {
 
-  event: Event;
-  campaign: Campaign;
+  // Initial values needed, otherwise errors are thrown for non existent properties in the html file
+  event: Event = {} as Event;
+  campaign: Campaign = {} as Campaign;
 
   constructor(private route: ActivatedRoute, private eventService: EventService, private campaignService: CampaignService) {
-
   }
 
   ngOnInit() {
@@ -33,20 +33,18 @@ export class ActivityComponent implements OnInit {
         this.getEvent(id);
         break;
       case 'campaigns':
-        this.getCampaigns(id);
+        this.getCampaign(id);
         break;
     }
-    console.log(typeOfActivity);
   }
 
-  getEvent(id: string): void {
+  private getEvent(id: string): void {
     this.eventService.getEventById(id)
       .subscribe(event => this.event = event);
   }
 
-  private getCampaigns(id: string) {
-
-    this.campaignService.getCampaignByIdMock(id)
+  private getCampaign(id: string) {
+    this.campaignService.getCampaignById(id)
       .subscribe(campaign => this.campaign = campaign);
   }
 }
