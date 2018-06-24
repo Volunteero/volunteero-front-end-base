@@ -36,9 +36,9 @@
         <p>{{event.description}}</p>
       </div>
       <div class="col-md-3">
-        <!-- TODO wire to correct place -->
-        <a [routerLink]="['/event/1']" class="btn btn-success btn-block">View Event details</a>
-        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Organizer</a>
+        <!--<a href="#" class="btn btn-success btn-block">View Event details</a>-->
+        <app-event-participation [event_id]="event.id"></app-event-participation>
+        <a href="#" class="btn btn-success btn-block">View Organizer</a>
       </div>
     </div>
   </div>

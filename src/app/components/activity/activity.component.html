@@ -1,49 +1,66 @@
-<div class="container">
-  <section id="header" class="">
-    <div class="bg-light py-4">
-      <div class="row">
-        <div class="col-2">
-          <img src="../../../assets/images/avatar.png" class="img-fluid rounded-circle float-left">
-        </div>
-        <div class="col ml-auto d-flex align-items-center">
-          <div id="entity-details">
-            <h2>{{displayName}}</h2>
-            <h5>{{contactName}}</h5>
-            <h6>{{location}}</h6>
-            <h6>Points: {{points}}</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div id="accordion">
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h5 class="mb-0">
-          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            Supporters
-          </button>
-        </h5>
-      </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-        <div class="card-body">
-          <app-supporters></app-supporters>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingThree">
-        <h5 class="mb-0">
-          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Timeline
-          </button>
-        </h5>
-      </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-        <div class="card-body">
-          <app-timeline></app-timeline>
-        </div>
-      </div>
-    </div>
+<!--If the event object is good we show it, otherwise we show campaigns-->
+<div *ngIf="showEvents;else campaign_view">
+
+
+  {{event.volunteers}}<br>
+  {{event.description}}<br>
+  {{event.points}}<br>
+  {{event.end}}<br>
+  {{event.start}}<br>
+  {{event.category}}<br>
+  {{event.volunteers}}<br>
+  {{event.name}}<br>
+  {{event.location}}<br>
+  {{event.available}}<br>
+
+
+</div>
+<ng-template #campaign_view>
+  {{campaign.description}}<br>
+  {{campaign.influencePoints}}<br>
+  {{campaign.name}}<br>
+
+</ng-template>
+
+
+<!--That is my previous html code for displaying an activity, feel free to delete it if not needed-->
+<!--Might need to edit the routing file to fully get rid of it-->
+<div class="row justify-content-center">
+  <div class="col-md-1 bg-light">
+    <img src="../../../assets/images/activity.png" class="img-fluid rounded-circle">
+  </div>
+  <div class="col-md-10 bg-light ">
+    <h5>This is a title</h5>
+    <p>Some details</p>
+    <p>Some details</p>
+
+  </div>
+
+</div>
+
+<div class="row justify-content-center ">
+  <div class="col-md-1 bg-light">
+    <button type="button" class="btn btn-secondary">Contribute</button>
+  </div>
+  <div class="col-md-10  bg-light">
+    Here we have some prograss #tags and so on
+
+  </div>
+</div>
+
+<div class="row justify-content-center " id="tab-bar">
+  <div class="col-md-11 bg-light">
+    <nav class="nav">
+      <a class="nav-link" [routerLink]="['./timeline']">Timeline</a>
+      <a class="nav-link" [routerLink]="['./supporters']">Supporters</a>
+    </nav>
+
+  </div>
+</div>
+<div class="row justify-content-center ">
+  <div class="col-md-11 ">
+
+    <router-outlet></router-outlet>
+
   </div>
 </div>

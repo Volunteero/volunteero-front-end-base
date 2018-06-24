@@ -16,14 +16,15 @@ export class OrganizationHelper {
 
   getOrganizationInfo(organizationId: string): Promise<Organization> {
 
-    return new Promise((_res) => {
+    return new Promise((_res, _rej) => {
       const orgRoute = this.orgRouteAggregator.getResourceRoute('organizations');
       const fullRoute = `${orgRoute}/${organizationId}`;
       this.http.get(fullRoute).subscribe((result: Organization) => {
         console.info(result);
         if (result) {
-
           _res(result);
+        }else{ 
+          _rej(new Error('no result form the get'));
         }
       })
     })

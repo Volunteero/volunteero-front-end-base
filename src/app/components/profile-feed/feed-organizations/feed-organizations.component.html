@@ -1,0 +1,17 @@
+<section id="header" class="">
+  <div class="container">
+    <div class="row" *ngFor="let org of organizations">
+      <div class="col-8">
+        <h2>
+          <span class="lnr lnr-poop"></span> {{org.organization_name}}
+        </h2>
+        <h6>
+          {{org.organization_description}}
+        </h6>
+        <a>
+          <span class="lnr lnr-link"></span> Check it out!
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

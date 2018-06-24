@@ -10,7 +10,6 @@ import {Event} from '../../../models/Event';
 export class EventsComponent implements OnInit {
 
   events: Event[] = [];
-
   constructor(private eventService: EventService) {
   }
 
@@ -19,9 +18,9 @@ export class EventsComponent implements OnInit {
   }
 
   getEvents(): void {
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events;
-    });
+    // this.eventService.getEvents().subscribe(events => {
+    //   this.events = events;
+    // });
   }
 
 }

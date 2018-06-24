@@ -2,14 +2,16 @@
   <div class="container bg-light py-4">
     <div class="row">
       <div class="col-2">
-        <img src="../../../assets/images/avatar.png" class="img-fluid rounded-circle float-left">
+        <img [src]="imageUrl" class="img-fluid rounded-circle float-left">
       </div>
       <div class="col ml-auto d-flex align-items-center">
         <div id="entity-details">
-          <h2>{{displayName}}</h2>
-          <h5>{{contactName}}</h5>
-          <h6>{{location}}</h6>
-          <h6>Points: {{points}}</h6>
+          <h2>{{title}}</h2>
+          <h5><span class="lnr lnr-rocket"></span> {{subtitle}}</h5>
+          <span *ngFor="let extra of extras">
+            <h6>{{extra}}</h6>
+          </span>
+          <ng-container *ngComponentOutlet="extraComponent"></ng-container>
         </div>
       </div>
     </div>
