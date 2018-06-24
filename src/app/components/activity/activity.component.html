@@ -2,27 +2,29 @@
 <div *ngIf="event;else campaign_view">
 
 
-  {{event.volunteers}}
-  {{event.description}}
-  {{event.points}}
-  {{event.end}}
-  {{event.start}}
-  {{event.category}}
-  {{event.volunteers}}
-  {{event.name}}
-  {{event.location}}
-  <!--{{}}-->
+  {{event.volunteers}}<br>
+  {{event.description}}<br>
+  {{event.points}}<br>
+  {{event.end}}<br>
+  {{event.start}}<br>
+  {{event.category}}<br>
+  {{event.volunteers}}<br>
+  {{event.name}}<br>
+  {{event.location}}<br>
+  {{event.available}}<br>
 
 
 </div>
 <ng-template #campaign_view>
-
-
+  {{campaign.description}}
+  {{campaign.influencePoints}}
+  {{campaign.name}}
 
 </ng-template>
 
 
 <!--That is my previous html code for displaying an activity, feel free to delete it if not needed-->
+<!--Might need to edit the routing file to fully get rid of it-->
 <div class="row justify-content-center">
   <div class="col-md-1 bg-light">
     <img src="../../../assets/images/activity.png" class="img-fluid rounded-circle">
