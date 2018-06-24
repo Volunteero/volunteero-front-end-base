@@ -24,7 +24,7 @@ export class CreateOrganizationComponent implements OnInit {
 
 
     this.organizationService.createOrganization(organization).then(result => {
-
+      console.log('called');
       const organization_id = result.organization_id;
 
       if (organization_id) {

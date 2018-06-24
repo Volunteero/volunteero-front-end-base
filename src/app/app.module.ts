@@ -1,3 +1,5 @@
+
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -80,6 +82,7 @@ import { CampaignListComponent } from './components/organization-details/campaig
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    SnotifyModule,
     FormsModule
   ],
   // Important to place injected (dynamically loaded) components here
@@ -91,7 +94,10 @@ import { CampaignListComponent } from './components/organization-details/campaig
     EventListComponent,
     CampaignListComponent
   ],
-  providers: [],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
