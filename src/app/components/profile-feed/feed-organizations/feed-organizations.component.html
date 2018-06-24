@@ -11,6 +11,11 @@
           {{org.organization_description}}
         </h6>
       </div>
+      <div class="row" *ngIf="organizations.length === 0">
+        <div class="col">
+          <h6 class="text-secondary">Huh, looks like you are not yet a member of any organizations - try creating one ;)</h6>
+        </div>
+      </div>
     </div>
   </div>
 </section>
