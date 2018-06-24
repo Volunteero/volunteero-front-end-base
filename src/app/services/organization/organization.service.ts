@@ -9,6 +9,7 @@ import { User } from '../../models/User';
 import { RouteAggregator, RouteAggregatorFactory } from '../../lib/RouteAggregator';
 import { BehaviorSubject } from 'rxjs';
 import { Campaign } from '../../models/Campaign';
+import { Event } from '../../models/Event';
 
 
 @Injectable({
@@ -46,7 +47,7 @@ export class OrganizationService {
       .registerResource('collect', 'campaigns/fromOrganization/');
 
     this._eventResourceAggregator = RouteAggregatorFactory
-      .createMethodBasedUrlAggregator('https://volunteero-events.herokuapp.com/');
+      .createMethodBasedUrlAggregator('https://volunteero-events.herokuapp.com');
     this._eventResourceAggregator
       .registerResource('collect', 'events/by', 'post');
   }
@@ -118,7 +119,7 @@ export class OrganizationService {
       value: id
     }
     return new Promise((_res, _rej) => {
-      this.http.post(route, { body }).subscribe((events: Event[]) => {
+      this.http.post(route, body).subscribe((events: Event[]) => {
         if (events) {
           console.log('OS: found a events');
           console.log(events);

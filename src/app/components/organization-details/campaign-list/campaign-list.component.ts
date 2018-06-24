@@ -16,6 +16,9 @@ export class CampaignListComponent implements OnInit {
   constructor(private orgService: OrganizationService) {
     this.orgService.organization$.subscribe((org) => {
       this._organization = org;
+      if (org) {
+        this.orgService.getOrganizationEvents(org.id);
+      }
     })
     this.orgService.orgCampaigns$.subscribe((campaigns) => {
       console.log('Got campaigns');
@@ -26,10 +29,9 @@ export class CampaignListComponent implements OnInit {
 
   ngOnInit() {
     this._organization = this.orgService.currenOrganization;
-    this.orgService.getOrganizationCampaigns(this._organization.id);
   }
 
-  get campaigns() : Campaign[] {
+  get campaigns(): Campaign[] {
     return this._campaigns;
   }
 }
