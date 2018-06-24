@@ -35,6 +35,7 @@ import { OrganizationDetailsComponent } from './components/organization-details/
 import { PointsComponentComponent } from './components/profile-header/points-component/points-component.component';
 import { FeedOrganizationsComponent } from './components/profile-feed/feed-organizations/feed-organizations.component';
 import { EventParticipationComponent } from './components/event-participation/event-participation.component';
+import { EventListComponent } from './components/organization-details/event-list/event-list.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { EventParticipationComponent } from './components/event-participation/ev
     PointsComponentComponent,
     FeedOrganizationsComponent,
     OrganizationDetailsComponent,
-    EventParticipationComponent
+    EventParticipationComponent,
+    EventListComponent
   ],
   imports: [
     BrowserModule,
@@ -78,11 +80,13 @@ import { EventParticipationComponent } from './components/event-participation/ev
     HttpClientModule,
     FormsModule
   ],
+  // Important to place injected (dynamically loaded) components here
   entryComponents: [
     PointsComponentComponent,
     FeedEventsComponent,
     FeedCampaignsComponent,
-    FeedOrganizationsComponent
+    FeedOrganizationsComponent,
+    EventListComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

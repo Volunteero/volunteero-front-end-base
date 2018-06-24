@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 import { FeedEventsComponent } from './feed-events/feed-events.component';
 import { FeedCampaignsComponent } from './feed-campaigns/feed-campaigns.component';
-import { ActionCapFactory, ComponentSwitchCap, ActionCap } from './lib/ActionCap';
+import { ActionCapFactory, ComponentSwitchCap, ActionCap } from '../../lib/ActionCap';
 import { FeedOrganizationsComponent } from './feed-organizations/feed-organizations.component';
-import TabProvider from './lib/TabProvider';
+import TabProvider from '../../lib/TabProvider';
 
 @Component({
   selector: 'app-profile-feed',
@@ -78,10 +78,6 @@ export class ProfileFeedComponent implements OnInit {
       return tab;
     });
     console.log(this.tabs);
-  }
-
-  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-    console.log(changes);
   }
 
   ngOnInit() {

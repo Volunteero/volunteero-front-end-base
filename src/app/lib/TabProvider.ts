@@ -1,7 +1,8 @@
 import { ActionCapFactory } from "./ActionCap";
-import { FeedEventsComponent } from "../feed-events/feed-events.component";
-import { FeedCampaignsComponent } from "../feed-campaigns/feed-campaigns.component";
-import { FeedOrganizationsComponent } from "../feed-organizations/feed-organizations.component";
+import { FeedEventsComponent } from "../components/profile-feed/feed-events/feed-events.component";
+import { FeedCampaignsComponent } from "../components/profile-feed/feed-campaigns/feed-campaigns.component";
+import { FeedOrganizationsComponent } from "../components/profile-feed/feed-organizations/feed-organizations.component";
+import { EventListComponent } from "../components/organization-details/event-list/event-list.component";
 
 export default class TabProvider {
   static getProfileTabs() {
@@ -20,6 +21,20 @@ export default class TabProvider {
         )
     ];
   }
+
+  static getOrganizationTabs() {
+    return [
+      ActionCapFactory
+        .createComponentSwitchCap(
+          'Events', 'event-feed-cap', EventListComponent
+        ).activate(),
+      ActionCapFactory
+        .createComponentSwitchCap(
+          'Campaigns', 'campaign-feed-cap', FeedCampaignsComponent
+        )
+    ];
+  }
+
 
   static getTabs(pageType: string): Array<any> {
     console.log(pageType);
