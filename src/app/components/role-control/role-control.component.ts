@@ -51,9 +51,10 @@ export class RoleControlComponent implements OnInit {
 
   get profileRouterLink() : String {
     const routeBase = '/profile';
+    const organizationHost = '/organizations';
     if(this.selectedRole.entityId !== RoleFactory.createGenericVolunteeroRole().entityId){
       const extra = this.selectedRole.entityId;
-      return `${routeBase}/${extra}`;
+      return `${organizationHost}/${extra}`;
     }
     return routeBase;
   }

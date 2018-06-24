@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 import { FeedEventsComponent } from './feed-events/feed-events.component';
 import { FeedCampaignsComponent } from './feed-campaigns/feed-campaigns.component';
 import { ActionCapFactory, ComponentSwitchCap, ActionCap } from './lib/ActionCap';
+import { FeedOrganizationsComponent } from './feed-organizations/feed-organizations.component';
+import TabProvider from './lib/TabProvider';
 
 @Component({
   selector: 'app-profile-feed',
@@ -12,21 +14,15 @@ export class ProfileFeedComponent implements OnInit {
 
   // Feed tab controls
   private _tabs;
+  private _type;
+
+  @Input()
+  set tabsType(value: string) {
+    this._type = value;
+  }
+
   // Profile extra actions
   private _extras;
-
-  private _retrieveTabs(): Array<ActionCap> {
-    return [
-      ActionCapFactory
-        .createComponentSwitchCap(
-          'Events', 'event-feed-cap', FeedEventsComponent
-        ).activate(),
-      ActionCapFactory
-        .createComponentSwitchCap(
-          'Campaigns', 'campaign-feed-cap', FeedCampaignsComponent
-        )
-    ];
-  }
 
   private _retrieveExtraActions(): Array<ActionCap> {
     return [
@@ -34,7 +30,7 @@ export class ProfileFeedComponent implements OnInit {
       ActionCapFactory.createRouteSwitchCap(
         'Compare', 'compare-profile', 'ratings'
       ).authorize(),
-      
+
       // This one takes the user to the edit profile
       ActionCapFactory.createRouteSwitchCap(
         'Edit', 'edit-profile', '/profile/edit'
@@ -48,9 +44,7 @@ export class ProfileFeedComponent implements OnInit {
   }
 
   constructor() {
-
-    this._tabs = this._retrieveTabs();
-
+    
     this._extras = this._retrieveExtraActions();
   }
 
@@ -78,13 +72,20 @@ export class ProfileFeedComponent implements OnInit {
   // TODO: consider this horrible method while refactoring!
   selectTab(selectedTab) {
     console.log(`Switching to ${selectedTab.id}`);
+    console.log(this.tabs);
     this._tabs = this._tabs.map((tab: ComponentSwitchCap) => {
       tab.active = (tab.id === selectedTab.id);
       return tab;
     });
+    console.log(this.tabs);
+  }
+
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+    console.log(changes);
   }
 
   ngOnInit() {
+    this._tabs = TabProvider.getTabs(this._type);
   }
 
 }
