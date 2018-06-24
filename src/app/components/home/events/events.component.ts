@@ -10,7 +10,6 @@ import {Event} from '../../../models/Event';
 export class EventsComponent implements OnInit {
 
   events: Event[] = [];
-
   constructor(private eventService: EventService) {
   }
 

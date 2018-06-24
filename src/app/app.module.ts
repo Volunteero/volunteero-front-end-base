@@ -34,7 +34,7 @@ import { CreateSponsorshipComponent } from './components/create/create-sponsorsh
 import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
 import { PointsComponentComponent } from './components/profile-header/points-component/points-component.component';
 import { FeedOrganizationsComponent } from './components/profile-feed/feed-organizations/feed-organizations.component';
-
+import { EventParticipationComponent } from './components/event-participation/event-participation.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,8 @@ import { FeedOrganizationsComponent } from './components/profile-feed/feed-organ
     CreateOrganizationComponent,
     PointsComponentComponent,
     FeedOrganizationsComponent,
-    OrganizationDetailsComponent
+    OrganizationDetailsComponent,
+    EventParticipationComponent
   ],
   imports: [
     BrowserModule,
