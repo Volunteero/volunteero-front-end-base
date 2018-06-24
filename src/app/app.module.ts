@@ -78,7 +78,8 @@ import { EventParticipationComponent } from './components/event-participation/ev
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SnotifyModule
+    SnotifyModule,
+    FormsModule
   ],
   entryComponents: [
     PointsComponentComponent,
