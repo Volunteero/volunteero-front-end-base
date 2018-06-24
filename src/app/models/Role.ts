@@ -18,6 +18,7 @@ export interface Role {
   level: string;
   // location: string;
   // imageUrl: string;
+  id: string;
   accessToken?: string;
   /**
    * Corresponds to the property of a role being a placholder or actually valid
@@ -56,12 +57,15 @@ export class SimpleRole implements Role {
     this.isReal = flag;
   }
 
+  id: string;
+
 }
 
 export class LeveledRole implements Role {
   // location: string;
   // imageUrl: string;
   accessToken: string;
+  id: string;
 
   userHasOrganizationRole: boolean;
 
