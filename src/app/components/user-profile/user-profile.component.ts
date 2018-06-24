@@ -4,7 +4,7 @@ import { UserInfoService } from '../../services/user-info/user-info.service';
 import { UserRoleService } from '../../services/user-role/user-role.service';
 import { User } from '../../models/User';
 import { PointsComponentComponent } from '../profile-header/points-component/points-component.component';
-import { ActionCapFactory, ComponentSwitchCap } from '../profile-feed/lib/ActionCap';
+import { ActionCapFactory, ComponentSwitchCap } from '../../lib/ActionCap';
 import { FeedEventsComponent } from '../profile-feed/feed-events/feed-events.component';
 import { FeedCampaignsComponent } from '../profile-feed/feed-campaigns/feed-campaigns.component';
 import { FeedOrganizationsComponent } from '../profile-feed/feed-organizations/feed-organizations.component';

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { OrganizationService } from '../../services/organization/organization.service';
 import { Organization } from '../../models/Organization';
 import { HeaderEntityFactory } from '../../models/HeaderEntity';
+import TabProvider from '../../lib/TabProvider';
+import { ActionCap, ComponentSwitchCap } from '../../lib/ActionCap';
 
 @Component({
   selector: 'app-organization-details',
@@ -11,7 +13,13 @@ import { HeaderEntityFactory } from '../../models/HeaderEntity';
 })
 export class OrganizationDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private organizationService: OrganizationService) {
+  private _tabs: ComponentSwitchCap[] = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private organizationService: OrganizationService
+  ) {
+    this._tabs = TabProvider.getOrganizationTabs();
   }
 
   public organization: Organization;
@@ -19,7 +27,7 @@ export class OrganizationDetailsComponent implements OnInit {
   get headerEntity() {
     const organization = this.organization;
     if (typeof organization === 'undefined') {
-      return  HeaderEntityFactory.createBasicHeaderEntity(
+      return HeaderEntityFactory.createBasicHeaderEntity(
         '', ''
       );
     }
@@ -39,8 +47,35 @@ export class OrganizationDetailsComponent implements OnInit {
 
     this.organizationService.getOrganizationById(id).subscribe((organization) => {
       this.organization = organization;
+      this.organizationService.setOrganization(organization);
     });
+  }
 
+  // FIXME: this is a very smell piece of duplicated code
+
+  get selectedComponent() {
+    // get first active tab
+    for (let tab of this._tabs) {
+      if (tab.active) {
+        // this.feedModule = this.compileComponet()
+        return tab.component;
+      }
+    }
+    return null;
+  }
+
+  selectTab(selectedTab) {
+    console.log(`Switching to ${selectedTab.id}`);
+    console.log(this.tabs);
+    this._tabs = this._tabs.map((tab: ComponentSwitchCap) => {
+      tab.active = (tab.id === selectedTab.id);
+      return tab;
+    });
+    console.log(this.tabs);
+  }
+
+  get tabs() {
+    return this._tabs;
   }
 
 }

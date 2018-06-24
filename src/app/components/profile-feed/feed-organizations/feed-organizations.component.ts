@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, InjectionToken, Inject } from '@angular/core';
 import { UserInfoService } from '../../../services/user-info/user-info.service';
 import { User } from '../../../models/User';
 import { Organisation } from '../../../models/Organisation';
@@ -14,7 +14,9 @@ export class FeedOrganizationsComponent implements OnInit {
   private _user: User;
   private _organizations: Organization[];
 
-  constructor(private userInfoService: UserInfoService) {
+  constructor(
+    private userInfoService: UserInfoService
+  ) {
     this.userInfoService.userInfo$.subscribe(
       userInfo => {
         this._user = userInfo;
@@ -30,6 +32,10 @@ export class FeedOrganizationsComponent implements OnInit {
         this._organizations = orgs;
       }
     )
+  }
+
+  getOrganizationLink(org: Organization):string {
+    return `/organizations/${org.id}`
   }
 
   get organizations() {
