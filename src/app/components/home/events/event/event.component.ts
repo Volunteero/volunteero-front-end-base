@@ -17,4 +17,7 @@ export class EventComponent implements OnInit {
   ngOnInit() {
   }
 
+  onEventDetails(eventId: string) {
+
+  }
 }

@@ -1,0 +1,24 @@
+<div class=" row">
+  <div class="col-md-8 col-center-block" style="margin-top:5%;">
+    <h1>Create a new organization</h1>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-5 col-center-block">
+
+
+    <form (ngSubmit)="createOrganization(name.value, description.value)">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Name:</label>
+        <input class="form-control" id="exampleFormControlInput1" #name>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #description></textarea>
+      </div>
+      <button type="submit" class="btn btn-danger mb-2">Create organization</button>
+    </form>
+  </div>
+</div>

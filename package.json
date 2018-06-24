@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod"
+    "postinstall": "ng build --prod",
+    "dev": "ng serve --open"
   },
   "private": true,
   "dependencies": {
@@ -24,10 +25,14 @@
     "@angular/platform-browser": "6.0.0",
     "@angular/platform-browser-dynamic": "6.0.0",
     "@angular/router": "6.0.0",
+    "@types/jwt-decode": "^2.2.1",
     "bootstrap": "^4.1.1",
+    "chart.js": "^2.7.2",
     "core-js": "^2.4.1",
     "express": "^4.16.3",
     "jquery": "^3.3.1",
+    "jwt-decode": "^2.2.0",
+    "ng-snotify": "^4.3.1",
     "rxjs": "^6.1.0",
     "zone.js": "^0.8.26"
   },

@@ -1,8 +1,13 @@
 export interface Event {
+  id: String;
   name: String;
   description: String;
-  startTime: String;
-  endTime: String;
+  start: String;
+  end: String;
   location: String;
-  peopleAttending: Number;
+  volunteers: Number;
+  category: String;
+  points: Number;
+  organization_id: String;
+  available: boolean;
 }

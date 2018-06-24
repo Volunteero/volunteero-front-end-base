@@ -1,0 +1,40 @@
+<!-- Current role -->
+<!-- !_! Notice the redirect here !_! -->
+<div [class]="styling.item" id="current-role" [routerLink]="profileRouterLink" [queryParams]="{role: selectedRole.id}">
+  <!-- TODO: make user logo image appear in line with the text? -->
+  <div>
+    <!-- TODO: add the edit and view incentives -->
+    <h4>{{displayName}}</h4>
+    <span *ngIf="selectedRole">
+      <span class="lnr lnr-user"></span> {{selectedRole.title | uppercase}}
+      <i>
+        <span *ngIf="selectedRole.level">({{selectedRole.level}})</span>
+      </i>
+      <br/>
+      <span class="lnr lnr-map-marker" *ngIf="selectedRole.location"></span> {{selectedRole.location}}
+      <br/>
+      token: ...{{accessToken | slice:-10}}
+    </span>
+  </div>
+</div>
+<!-- Role controls -->
+<!-- TODO: decide if needed and apply nice styling if so... -->
+<!-- FIXME: I look ugly -->
+<!-- <div>
+  <div [class]="styling.item">
+    <span class="lnr lnr-eye"></span> profile
+  </div>
+  <div [class]="styling.item">
+    <span class="lnr lnr-cog"></span> settings
+  </div>
+</div> -->
+
+<div [class]="styling.divider"></div>
+
+<!-- List of available roles -->
+<div id="available-roles">
+  <div [class]="styling.item" *ngFor="let role of knownRoles">
+    <app-list-role [role]="role" (click)="selectRole(role)">
+    </app-list-role>
+  </div>
+</div>

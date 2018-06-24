@@ -1,0 +1,22 @@
+<section id="header" class="">
+  <div class="container">
+    <div class="row" *ngFor="let event of events">
+      <div class="col-8">
+        <a [routerLink]="getEventLink(event)" class="text-success">
+          <h2>
+            <span class="lnr lnr-hand"></span>
+            {{event.name}}
+          </h2>
+        </a>
+        <h6>
+          {{event}}
+        </h6>
+      </div>
+    </div>
+    <div class="row" *ngIf="events.length === 0">
+      <div class="col">
+        <h6 class="text-secondary">Huh, looks kinda empty, try joining some events ;)</h6>
+      </div>
+    </div>
+  </div>
+</section>

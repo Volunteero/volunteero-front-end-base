@@ -1,0 +1,36 @@
+<div class="row ">
+  <div class="col-md-2 text-center">
+    <img src="../../../../../assets/images/event.png">
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>{{organization.organization_name}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="row">
+          <div class="col-md-12">
+            <p>Events: {{organization.event_ids.length}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>Campaigns: {{organization.campaign_ids.length}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <p>{{organization.organization_description}}</p>
+      </div>
+      <div class="col-md-3">
+        <!-- TODO wire to correct place -->
+        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Organization details</a>
+        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Events</a>
+        <a [routerLink]="['/organization/1']" class="btn btn-success btn-block">View Campaigns</a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
