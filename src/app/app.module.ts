@@ -37,6 +37,8 @@ import { OrganizationDetailsComponent } from './components/organization-details/
 import { PointsComponentComponent } from './components/profile-header/points-component/points-component.component';
 import { FeedOrganizationsComponent } from './components/profile-feed/feed-organizations/feed-organizations.component';
 import { EventParticipationComponent } from './components/event-participation/event-participation.component';
+import { EventListComponent } from './components/organization-details/event-list/event-list.component';
+import { CampaignListComponent } from './components/organization-details/campaign-list/campaign-list.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { EventParticipationComponent } from './components/event-participation/ev
     PointsComponentComponent,
     FeedOrganizationsComponent,
     OrganizationDetailsComponent,
-    EventParticipationComponent
+    EventParticipationComponent,
+    EventListComponent,
+    CampaignListComponent
   ],
   imports: [
     BrowserModule,
@@ -81,11 +85,14 @@ import { EventParticipationComponent } from './components/event-participation/ev
     SnotifyModule,
     FormsModule
   ],
+  // Important to place injected (dynamically loaded) components here
   entryComponents: [
     PointsComponentComponent,
     FeedEventsComponent,
     FeedCampaignsComponent,
-    FeedOrganizationsComponent
+    FeedOrganizationsComponent,
+    EventListComponent,
+    CampaignListComponent
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
