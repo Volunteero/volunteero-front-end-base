@@ -36,6 +36,7 @@ import { PointsComponentComponent } from './components/profile-header/points-com
 import { FeedOrganizationsComponent } from './components/profile-feed/feed-organizations/feed-organizations.component';
 import { EventParticipationComponent } from './components/event-participation/event-participation.component';
 import { EventListComponent } from './components/organization-details/event-list/event-list.component';
+import { CampaignListComponent } from './components/organization-details/campaign-list/campaign-list.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { EventListComponent } from './components/organization-details/event-list
     FeedOrganizationsComponent,
     OrganizationDetailsComponent,
     EventParticipationComponent,
-    EventListComponent
+    EventListComponent,
+    CampaignListComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,8 @@ import { EventListComponent } from './components/organization-details/event-list
     FeedEventsComponent,
     FeedCampaignsComponent,
     FeedOrganizationsComponent,
-    EventListComponent
+    EventListComponent,
+    CampaignListComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

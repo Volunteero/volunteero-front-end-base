@@ -47,6 +47,7 @@ export class OrganizationDetailsComponent implements OnInit {
 
     this.organizationService.getOrganizationById(id).subscribe((organization) => {
       this.organization = organization;
+      this.organizationService.setOrganization(organization);
     });
   }
 

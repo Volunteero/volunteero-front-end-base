@@ -3,6 +3,7 @@ import { FeedEventsComponent } from "../components/profile-feed/feed-events/feed
 import { FeedCampaignsComponent } from "../components/profile-feed/feed-campaigns/feed-campaigns.component";
 import { FeedOrganizationsComponent } from "../components/profile-feed/feed-organizations/feed-organizations.component";
 import { EventListComponent } from "../components/organization-details/event-list/event-list.component";
+import { CampaignListComponent } from "../components/organization-details/campaign-list/campaign-list.component";
 
 export default class TabProvider {
   static getProfileTabs() {
@@ -30,7 +31,7 @@ export default class TabProvider {
         ).activate(),
       ActionCapFactory
         .createComponentSwitchCap(
-          'Campaigns', 'campaign-feed-cap', FeedCampaignsComponent
+          'Campaigns', 'campaign-feed-cap', CampaignListComponent
         )
     ];
   }

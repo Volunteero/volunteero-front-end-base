@@ -1,0 +1,22 @@
+<section id="header" class="">
+  <div class="container">
+    <div class="row" *ngFor="let camp of campaigns">
+      <div class="col-8">
+        <a [routerLink]="getCampaignLink(camp)" class="text-success">
+          <h2>
+            <span class="lnr lnr-flag"></span>
+            {{camp.name}}
+          </h2>
+        </a>
+        <h6>
+          {{camp.description}}
+        </h6>
+      </div>
+    </div>
+    <div class="row" *ngIf="campaigns.length === 0">
+      <div class="col">
+        <h6 class="text-secondary">Hmmm, looks kinda empty, apparently they have not published any campaigns yet ;)</h6>
+      </div>
+    </div>
+  </div>
+</section>
