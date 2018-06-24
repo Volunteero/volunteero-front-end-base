@@ -86,8 +86,15 @@ export class EventService {
 
   }
 
-
   getEventById(id: string): Observable<Event> {
+
+    return this.http.get(this.baseUrl + 'events/' + id, this.httpOptions).pipe(catchError(err => {
+      return of(err);
+    }));
+
+  }
+
+  getEventByIdMock(id: string): Observable<Event> {
     return of({
       id: '1232312312312',
       name: 'Event 1 Name',

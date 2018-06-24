@@ -33,19 +33,17 @@ export class ActivityComponent implements OnInit {
         this.getEvent(id);
         break;
       case 'campaigns':
-        this.getCampaigns(id);
+        this.getCampaign(id);
         break;
     }
-    console.log(typeOfActivity);
   }
 
-  getEvent(id: string): void {
+  private getEvent(id: string): void {
     this.eventService.getEventById(id)
       .subscribe(event => this.event = event);
   }
 
-  private getCampaigns(id: string) {
-
+  private getCampaign(id: string) {
     this.campaignService.getCampaignByIdMock(id)
       .subscribe(campaign => this.campaign = campaign);
   }

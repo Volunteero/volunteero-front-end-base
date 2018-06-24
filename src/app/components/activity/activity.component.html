@@ -1,3 +1,28 @@
+<!--If the event object is good we show it, otherwise we show campaigns-->
+<div *ngIf="event;else campaign_view">
+
+
+  {{event.volunteers}}
+  {{event.description}}
+  {{event.points}}
+  {{event.end}}
+  {{event.start}}
+  {{event.category}}
+  {{event.volunteers}}
+  {{event.name}}
+  {{event.location}}
+  <!--{{}}-->
+
+
+</div>
+<ng-template #campaign_view>
+
+
+
+</ng-template>
+
+
+<!--That is my previous html code for displaying an activity, feel free to delete it if not needed-->
 <div class="row justify-content-center">
   <div class="col-md-1 bg-light">
     <img src="../../../assets/images/activity.png" class="img-fluid rounded-circle">
@@ -23,7 +48,7 @@
 
 <div class="row justify-content-center " id="tab-bar">
   <div class="col-md-11 bg-light">
-    <nav class="nav" >
+    <nav class="nav">
       <a class="nav-link" [routerLink]="['./timeline']">Timeline</a>
       <a class="nav-link" [routerLink]="['./supporters']">Supporters</a>
     </nav>
