@@ -17,6 +17,8 @@ export class ActivityComponent implements OnInit {
   event: Event = {} as Event;
   campaign: Campaign = {} as Campaign;
 
+  showEvents: boolean;
+
   constructor(private route: ActivatedRoute, private eventService: EventService, private campaignService: CampaignService) {
   }
 
@@ -31,9 +33,11 @@ export class ActivityComponent implements OnInit {
     switch (typeOfActivity) {
       case 'events':
         this.getEvent(id);
+        this.showEvents = true;
         break;
       case 'campaigns':
         this.getCampaign(id);
+        this.showEvents = false;
         break;
     }
   }

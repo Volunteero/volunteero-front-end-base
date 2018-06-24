@@ -1,5 +1,5 @@
 <!--If the event object is good we show it, otherwise we show campaigns-->
-<div *ngIf="event;else campaign_view">
+<div *ngIf="showEvents;else campaign_view">
 
 
   {{event.volunteers}}<br>
@@ -16,9 +16,9 @@
 
 </div>
 <ng-template #campaign_view>
-  {{campaign.description}}
-  {{campaign.influencePoints}}
-  {{campaign.name}}
+  {{campaign.description}}<br>
+  {{campaign.influencePoints}}<br>
+  {{campaign.name}}<br>
 
 </ng-template>
 
