@@ -1,5 +1,6 @@
 // The fields are named the same way they need to be in the http request, so no hate for not following the convention
 export interface Organization {
+  id: String;
   user_id: String | string;
   organization_id: String | string;
   event_ids: [String | string];
