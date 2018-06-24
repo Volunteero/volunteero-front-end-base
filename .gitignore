@@ -45,3 +45,5 @@ Thumbs.db
 .directory
 .vs/slnx.sqlite
 .vs/slnx.sqlite-journal
+.vs/config/applicationhost.config
+.vs/volunteero-front-end-base/v15/.suo
